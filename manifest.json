@@ -1,0 +1,34 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": ["HirziDevs"],
+		"url": "https://github.com/HirziDevs",
+		"license": "MIT"
+	},
+	"header": {
+		"name": "§eCustom Cobblestone Ore Generator §d[1.0.0]§f",
+		"description": "Customize your Cobblestone Generator!\nAddons By: §bHirziDevs§f",
+		"uuid": "15c4dbf1-0871-42e5-8b04-114daa5b7ab4",
+		"version": [1, 0, 0],
+		"min_engine_version": [1, 20, 80]
+	},
+	"modules": [
+		{
+			"type": "data",
+			"uuid": "c6c8077a-9d2c-41d0-bf61-007ddd13fb3e",
+			"version": [1, 0, 0]
+		},
+		{
+			"type": "script",
+			"uuid": "8df2bb30-ab8b-4797-bc58-c589b64fd5f7",
+			"version": [1, 0, 0],
+			"entry": "scripts/main.js"
+		}
+	],
+	"dependencies": [
+		{
+			"module_name": "@minecraft/server",
+			"version": "1.11.0-beta"
+		}
+	]
+}
