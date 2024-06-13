@@ -12,52 +12,54 @@ import { world } from '@minecraft/server';
 import config from './config';
 
 world.afterEvents.playerBreakBlock.subscribe(event => {
+    const Water = ["minecraft:flowing_water","minecraft:water"]
+    const Lava = ["minecraft:flowing_lava","minecraft:lava"]
     const { dimension, location } = event.block
     let isCobblestoneGenerator = false
     
     if (
-        ["minecraft:flowing_water","minecraft:water"].includes(dimension.getBlock({
+        Water.includes(dimension.getBlock({
             x: location.x + 1,
             y: location.y,
             z: location.z
         }).type.id) &&
-        ["minecraft:flowing_lava","minecraft:lava"].includes(dimension.getBlock({
+        Lava.includes(dimension.getBlock({
             x: location.x - 1,
             y: location.y,
             z: location.z
         }).type.id)
     ) isCobblestoneGenerator = true
     if (
-        ["minecraft:flowing_water","minecraft:water"].includes(dimension.getBlock({
+        Water.includes(dimension.getBlock({
             x: location.x - 1,
             y: location.y,
             z: location.z
         }).type.id) &&
-        ["minecraft:flowing_lava","minecraft:lava"].includes(dimension.getBlock({
+        Lava.includes(dimension.getBlock({
             x: location.x + 1,
             y: location.y,
             z: location.z
         }).type.id)
     ) isCobblestoneGenerator = true
     if (
-        ["minecraft:flowing_water","minecraft:water"].includes(dimension.getBlock({
+        Water.includes(dimension.getBlock({
             x: location.x,
             y: location.y,
             z: location.z + 1
         }).type.id) &&
-        ["minecraft:flowing_lava","minecraft:lava"].includes(dimension.getBlock({
+        Lava.includes(dimension.getBlock({
             x: location.x,
             y: location.y,
             z: location.z - 1
         }).type.id)
     ) isCobblestoneGenerator = true
     if (
-        ["minecraft:flowing_water","minecraft:water"].includes(dimension.getBlock({
+        Water.includes(dimension.getBlock({
             x: location.x,
             y: location.y,
             z: location.z - 1
         }).type.id) &&
-        ["minecraft:flowing_lava","minecraft:lava"].includes(dimension.getBlock({
+        Lava.includes(dimension.getBlock({
             x: location.x,
             y: location.y,
             z: location.z + 1
