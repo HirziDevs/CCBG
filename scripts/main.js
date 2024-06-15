@@ -1,10 +1,10 @@
 /* 
- ______     ______    ______   
-/\  ___\   /\  ___\  /\  ___\   
-\ \ \____  \ \ \____ \ \ \__ \  
- \ \_____\  \ \_____\ \ \_____\ 
-  \/_____/   \/_____/  \/_____/ 
-                                            
+ ______     ______     ______     ______    
+/\  ___\   /\  ___\   /\  == \   /\  ___\   
+\ \ \____  \ \ \____  \ \  __<   \ \ \__ \  
+ \ \_____\  \ \_____\  \ \_____\  \ \_____\ 
+  \/_____/   \/_____/   \/_____/   \/_____/ 
+                                                
 A Custom Cobblestone Generator By @HirziDevs
 
 */
@@ -136,6 +136,8 @@ world.afterEvents.playerBreakBlock.subscribe(event => {
     }
 
     if (isCobblestoneGenerator || isBasaltGenerator) {
+        if(isCobblestoneGenerator && !config.cobblestone) return
+        if(isBasaltGenerator && !config.basalt) return
         let chances = 0;
         let selectedBlock = config.blocks[0].name;
 
