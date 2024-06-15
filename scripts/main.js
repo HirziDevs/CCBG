@@ -138,10 +138,26 @@ world.afterEvents.playerBreakBlock.subscribe(event => {
     if (isCobblestoneGenerator || isBasaltGenerator) {
         if(isCobblestoneGenerator && !config.cobblestone) return
         if(isBasaltGenerator && !config.basalt) return
+        let blocks;
+        if (config.enablePerDimensionGenerator) {
+            switch (event.dimension.id) {
+                case "minecraft:overworld":
+                    blocks = config.overworld
+                    break;
+                case "minecraft:nether":
+                    blocks = config.nether
+                    break;
+                case "minecraft:the_end":
+                    blocks = config.the_end
+                    break;
+                default:
+                    blocks = config.blocks
+            }
+        } else blocks = config.blocks
         let chances = 0;
-        let selectedBlock = config.blocks[0].name;
+        let selectedBlock = blocks[0].name;
 
-        for (const block of config.blocks) {
+        for (const block of blocks) {
             chances += block.chance;
             if (Math.random() < chances) {
                 selectedBlock = block.name;
