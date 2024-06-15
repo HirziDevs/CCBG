@@ -1,20 +1,27 @@
-# Custom Cobblestone Ore Generator
-<img alt="CCOG Banner" src="https://media.forgecdn.net/attachments/description/1035052/description_65177dea-c866-433c-bfdd-d65c6e96d483.png" width="555"/>
+# Custom Cobblestone Generator
+<img alt="CCG Banner" src="https://media.forgecdn.net/attachments/description/1035052/description_65177dea-c866-433c-bfdd-d65c6e96d483.png" width="555"/>
 
-A Custom Cobblestone Ore Generator for Minecraft Bedrock Edition!
+Customize your cobblestone generator with this addon! You can make your cobblestone generator spawn any block you want. By default, it spawns all Minecraft ores, including ancient debris, making it perfect for SkyBlock and other minigames that utilize cobblestone generators.
 
-Why choose this addons? Because this addon _does not add additional blocks and entities that must be crafted first and also don't use command block to create a custom generator! This addons does not use player.json so it'll work with other addons!_ You just need to make a cobblestone generator as usual and it will work straight away!
+Why choose this addon? Because it does not add additional blocks or entities that need to be crafted first and also doesn't use command blocks to create a custom generator! This addon also does not use player.json, so it will work with other addons! You just need to make a cobblestone generator as usual, and it will work straight away! Future updates will include features such as per-dimension generators, custom tiers, and more. So stay tuned!
 
 ## Preview
 Check this video:
 
 <a href="https://www.youtube.com/watch?v=sDB8kqgZz1w">
-  <img alt="CCOG Youtube Preview" src="https://github.com/HirziDevs/CCOG/assets/64255651/27df24cc-8caa-4bdd-9ab3-70005909921c" width="555"/>
+  <img alt="CCG Youtube Preview" src="https://github.com/HirziDevs/CCOG/assets/64255651/27df24cc-8caa-4bdd-9ab3-70005909921c" width="555"/>
 </a>
 
 ## Configuration
-You can customize what block will appear and its chances to appear on config.js file at the script folder _(CCOG v1.0.2/scripts/config.js)_
+You can customize which blocks will appear and their chances to appear in the config.js file located in the script folder (CCG v1.0.2/scripts/config.js).
 
-If you already add this addons to a world and want to change the config, you need to change the config at the world behavior pack folder or you can just delete the pack folder and copy the new one with a new configuration
+If you have already added this addon to a world and want to change the config, you need to update the config in the world's behavior pack folder. Alternatively, you can delete the existing pack folder and copy the new one with the updated configuration.
 
-<img alt="CCOG Configuration" src="https://media.forgecdn.net/attachments/description/1035052/description_b6b6e5de-15ef-40c3-bc09-2cd1d91acb82.png" width="555"/>
+World Behavior Packs Location
+Android:
+Android/data/com.mojang.minecraftpe/files/games/com.mojang/minecraftWorlds/(find your world folder)/behavior_packs/CCG/scripts/config.js
+
+Windows:
+(User)/AppData/Local/Packages/Microsoft.MinecraftUWP_8wekb3d8bbwe/LocalState/games/com.mojang/minecraftWorlds/(find your world folder)/behavior_packs/CCG/scripts/config.js
+
+<img alt="CCG Configuration" src="https://media.forgecdn.net/attachments/description/1035052/description_b6b6e5de-15ef-40c3-bc09-2cd1d91acb82.png" width="555"/>
