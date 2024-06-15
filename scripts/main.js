@@ -16,6 +16,7 @@ world.afterEvents.playerBreakBlock.subscribe(event => {
     const Lava = ["minecraft:flowing_lava","minecraft:lava"]
     const { dimension, location } = event.block
     let isCobblestoneGenerator = false
+    let isBasaltGenerator = false
     
     if (
         Water.includes(dimension.getBlock({
@@ -67,14 +68,74 @@ world.afterEvents.playerBreakBlock.subscribe(event => {
     ) isCobblestoneGenerator = true
 
     if (
+        "minecraft:blue_ice" === dimension.getBlock({
+            x: location.x + 1,
+            y: location.y,
+            z: location.z
+        }).type.id &&
+        Lava.includes(dimension.getBlock({
+            x: location.x - 1,
+            y: location.y,
+            z: location.z
+        }).type.id)
+    ) isBasaltGenerator = true
+    if (
+        "minecraft:blue_ice" === dimension.getBlock({
+            x: location.x - 1,
+            y: location.y,
+            z: location.z
+        }).type.id &&
+        Lava.includes(dimension.getBlock({
+            x: location.x + 1,
+            y: location.y,
+            z: location.z
+        }).type.id)
+    ) isBasaltGenerator = true
+    if (
+        "minecraft:blue_ice" === dimension.getBlock({
+            x: location.x,
+            y: location.y,
+            z: location.z + 1
+        }).type.id &&
+        Lava.includes(dimension.getBlock({
+            x: location.x,
+            y: location.y,
+            z: location.z - 1
+        }).type.id)
+    ) isBasaltGenerator = true
+    if (
+        "minecraft:blue_ice" === dimension.getBlock({
+            x: location.x,
+            y: location.y,
+            z: location.z - 1
+        }).type.id &&
+        Lava.includes(dimension.getBlock({
+            x: location.x,
+            y: location.y,
+            z: location.z + 1
+        }).type.id)
+    ) isBasaltGenerator = true
+
+    if (
+        dimension.getBlock({
+            x: location.x,
+            y: location.y - 1,
+            z: location.z
+        }).type.id !== "minecraft:soul_soil"
+    ) isBasaltGenerator = false
+
+    if (
         dimension.getBlock({
             x: location.x,
             y: location.y,
             z: location.z
         }).type.id !== "minecraft:air"
-    ) isCobblestoneGenerator = false
+    ) {
+        isCobblestoneGenerator = false
+        isBasaltGenerator = false
+    }
 
-    if (isCobblestoneGenerator) {
+    if (isCobblestoneGenerator || isBasaltGenerator) {
         let chances = 0;
         let selectedBlock = config.blocks[0].name;
 
