@@ -67,7 +67,7 @@ config.nether = [
 ]
 
 config.the_end = [
-	{ name: "deepslate", chance: 0.14 },
+	{ name: "end_stone", chance: 0.14 },
 	{ name: "deepslate_coal_ore", chance: 0.13 },
 	{ name: "deepslate_iron_ore", chance: 0.13 },
 	{ name: "deepslate_copper_ore", chance: 0.12 },
