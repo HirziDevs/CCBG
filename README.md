@@ -13,7 +13,7 @@ Check this video:
 </a>
 
 ## Configuration
-You can customize which blocks will appear and their chances to appear in the config.js file located in the script folder (CCBG v1.0.3/scripts/config.js).
+You can customize which blocks will appear and their chances to appear in the config.js file located in the script folder (CCBG/scripts/config.js).
 
 If you have already added this addon to a world and want to change the config, you need to update the config in the world's behavior pack folder. Alternatively, you can delete the existing pack folder and copy the new one with the updated configuration.
 
@@ -24,19 +24,28 @@ _Android/data/com.mojang.minecraftpe/files/games/com.mojang/minecraftWorlds/(fin
 Windows:
 _(User)/AppData/Local/Packages/Microsoft.MinecraftUWP_8wekb3d8bbwe/LocalState/games/com.mojang/minecraftWorlds/(find your world folder)/behavior_packs/CCBG/scripts/config.js_
 
-### Enable Generator
+### Enable or Disable Generator
 You can enable or disable cobblestone or basalt in this configuration.
 
 <img alt="CCBG Generator Configuration" src="https://media.forgecdn.net/attachments/description/1035052/description_4fa1c1a6-4e17-4fe4-8d55-0b800b84b05a.png" width="555"/>
 
-### Generator Blocks
-You can add or remove which blocks will spawn in this configuration.
+### Customizing Generator Blocks
+You can add or remove which blocks will spawn in this configuration. To find block identifier you can use `/setblock` command
 
-<img alt="CCBG Blocks Configuration" src="https://media.forgecdn.net/attachments/description/1035052/description_ca5e48c2-22ec-4b59-a83a-8e89ccf1e5ba.png" width="555"/>
+<img alt="/setblock for vanilla blocks" src="https://media.forgecdn.net/attachments/description/1035052/description_76c00c5a-e800-4b4d-80b0-fbb8a9ae160b.jpg" width="555"/>
 
-### Per Dimension Generator
+<img alt="CCBG Blocks Configuration" src="https://media.forgecdn.net/attachments/description/1035052/description_6ea41ac8-d812-4e7c-a9cf-81f8054c50f7.png" width="555"/>
+
+### Customizing Per Dimension Generator
 You can also create a per-dimension generator, so each dimension has its own generator configuration. To enable this, simply set `config.enablePerDimensionGenerator` from `false` to `true`.
 
-<img alt="CCBG Per Dimension Configuration" src="https://media.forgecdn.net/attachments/description/1035052/description_3e7a8d43-8baa-404c-9ac1-4d96596f6312.png" width="555"/>
+<img alt="CCBG Per Dimension Configuration" src="https://media.forgecdn.net/attachments/description/1035052/description_d47ee02d-c129-4dd5-bc95-c57316265897.png" width="555"/>
+
+### Custom Block from another Addons
+Do you want a custom block from another addon to be spawned in the generator? You can! You just need to add the block identifier. For example, if you want to add `Box` from MonoDeco Addons, you should use `md3:box_md3` as the block identifier.
+
+<img alt="/setblock for custom blocks" src="https://media.forgecdn.net/attachments/description/1035052/description_e3486318-62c3-46b9-95d3-6dfe085d3418.jpg" width="555"/>
+
+<img alt="Custom Block in CCBG" src="https://media.forgecdn.net/attachments/description/1035052/description_1d3d0565-1329-4082-82da-25ff846fdd3d.png" width="555"/>
 
 Thanks for using my addon! If you want to share this addon, please use this page. Thanks!
