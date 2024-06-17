@@ -55,6 +55,6 @@ Do you want a custom block from another addon to be spawned in the generator? Yo
 
 <img alt="/setblock for custom blocks" src="https://media.forgecdn.net/attachments/description/1035052/description_e3486318-62c3-46b9-95d3-6dfe085d3418.jpg" width="555"/>
 
-<img alt="Custom Block in CCBG" src="https://media.forgecdn.net/attachments/description/1035052/description_1d3d0565-1329-4082-82da-25ff846fdd3d.png" width="555"/>
+<img alt="Custom Block in CCBG" src="https://media.forgecdn.net/attachments/description/1035052/description_1570aa7a-6e1f-4532-a0a1-5f60877b1f77.png" width="555"/>
 
 Thanks for using my addon! If you want to share this addon, please use this page. Thanks!
