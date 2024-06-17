@@ -44,6 +44,8 @@ You can also create a per-dimension generator, so each dimension has its own gen
 ### Custom Generator
 Do you want a custom generator with the blocks you want? Yes, you can! To enable this, simply set `config.enableCustomGenerator` from `false` to `true`. Then, you can edit the left block, right block, and which blocks it spawns in this configuration.
 
+For your information, you need to break a block in the middle first to make the generator work. You can use all types of blocks. If there is no block, just place one.
+
 <img alt="CCBG Custom Generator Configuration" src="https://media.forgecdn.net/attachments/description/1035052/description_6efe3376-b0d9-4d0c-b159-c4085524f243.png" width="555"/>
 
 You can also add more than one generator by adding another object to the array.
