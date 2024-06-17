@@ -12,164 +12,76 @@ import { world } from '@minecraft/server';
 import config from './config';
 
 world.afterEvents.playerBreakBlock.subscribe(event => {
-    const Water = ["minecraft:flowing_water", "minecraft:water"]
-    const Lava = ["minecraft:flowing_lava", "minecraft:lava"]
-    const { dimension, location } = event.block
-    let isCobblestoneGenerator = false
-    let isBasaltGenerator = false
-    let isCustomGenerator = false
-    let customGeneratorID = -1
+    const { dimension, location } = event.block;
+
+    const locations = [
+        { x: location.x + 1, y: location.y, z: location.z },
+        { x: location.x - 1, y: location.y, z: location.z },
+        { x: location.x, y: location.y, z: location.z + 1 },
+        { x: location.x, y: location.y, z: location.z - 1 }
+    ];
+
+    const Water = ["minecraft:flowing_water", "minecraft:water"];
+    const Lava = ["minecraft:flowing_lava", "minecraft:lava"];
+    let isCobblestoneGenerator = false;;
+    let isBasaltGenerator = false;;
+    let isCustomGenerator = false;;
+    let customGeneratorID = -1;
 
     config.customGenerator.forEach((generator, i) => {
         if (
-            generator.left_block.includes(dimension.getBlock({
-                x: location.x + 1,
-                y: location.y,
-                z: location.z
-            }).type.id) &&
-            generator.right_block.includes(dimension.getBlock({
-                x: location.x - 1,
-                y: location.y,
-                z: location.z
-            }).type.id)
-        ) isCustomGenerator = true
+            generator.left_block.includes(dimension.getBlock(locations[0]).type.id) &&
+            generator.right_block.includes(dimension.getBlock(locations[1]).type.id)
+        ) isCustomGenerator = true;
         if (
-            generator.left_block.includes(dimension.getBlock({
-                x: location.x - 1,
-                y: location.y,
-                z: location.z
-            }).type.id) &&
-            generator.right_block.includes(dimension.getBlock({
-                x: location.x + 1,
-                y: location.y,
-                z: location.z
-            }).type.id)
-        ) isCustomGenerator = true
+            generator.left_block.includes(dimension.getBlock(locations[1]).type.id) &&
+            generator.right_block.includes(dimension.getBlock(locations[0]).type.id)
+        ) isCustomGenerator = true;
         if (
-            generator.left_block.includes(dimension.getBlock({
-                x: location.x,
-                y: location.y,
-                z: location.z + 1
-            }).type.id) &&
-            generator.right_block.includes(dimension.getBlock({
-                x: location.x,
-                y: location.y,
-                z: location.z - 1
-            }).type.id)
-        ) isCustomGenerator = true
+            generator.left_block.includes(dimension.getBlock(locations[2]).type.id) &&
+            generator.right_block.includes(dimension.getBlock(locations[3]).type.id)
+        ) isCustomGenerator = true;
         if (
-            generator.left_block.includes(dimension.getBlock({
-                x: location.x,
-                y: location.y,
-                z: location.z - 1
-            }).type.id) &&
-            generator.right_block.includes(dimension.getBlock({
-                x: location.x,
-                y: location.y,
-                z: location.z + 1
-            }).type.id)
-        ) isCustomGenerator = true
+            generator.left_block.includes(dimension.getBlock(locations[3]).type.id) &&
+            generator.right_block.includes(dimension.getBlock(locations[2]).type.id)
+        ) isCustomGenerator = true;
 
         if (isCustomGenerator) customGeneratorID = i
-    })
+    });
 
     if (
-        Water.includes(dimension.getBlock({
-            x: location.x + 1,
-            y: location.y,
-            z: location.z
-        }).type.id) &&
-        Lava.includes(dimension.getBlock({
-            x: location.x - 1,
-            y: location.y,
-            z: location.z
-        }).type.id)
-    ) isCobblestoneGenerator = true
+        Water.includes(dimension.getBlock(locations[0]).type.id) &&
+        Lava.includes(dimension.getBlock(locations[1]).type.id)
+    ) isCobblestoneGenerator = true;
     if (
-        Water.includes(dimension.getBlock({
-            x: location.x - 1,
-            y: location.y,
-            z: location.z
-        }).type.id) &&
-        Lava.includes(dimension.getBlock({
-            x: location.x + 1,
-            y: location.y,
-            z: location.z
-        }).type.id)
-    ) isCobblestoneGenerator = true
+        Water.includes(dimension.getBlock(locations[1]).type.id) &&
+        Lava.includes(dimension.getBlock(locations[0]).type.id)
+    ) isCobblestoneGenerator = true;
     if (
-        Water.includes(dimension.getBlock({
-            x: location.x,
-            y: location.y,
-            z: location.z + 1
-        }).type.id) &&
-        Lava.includes(dimension.getBlock({
-            x: location.x,
-            y: location.y,
-            z: location.z - 1
-        }).type.id)
-    ) isCobblestoneGenerator = true
+        Water.includes(dimension.getBlock(locations[2]).type.id) &&
+        Lava.includes(dimension.getBlock(locations[3]).type.id)
+    ) isCobblestoneGenerator = true;
     if (
-        Water.includes(dimension.getBlock({
-            x: location.x,
-            y: location.y,
-            z: location.z - 1
-        }).type.id) &&
-        Lava.includes(dimension.getBlock({
-            x: location.x,
-            y: location.y,
-            z: location.z + 1
-        }).type.id)
-    ) isCobblestoneGenerator = true
+        Water.includes(dimension.getBlock(locations[3]).type.id) &&
+        Lava.includes(dimension.getBlock(locations[2]).type.id)
+    ) isCobblestoneGenerator = true;
 
     if (
-        "minecraft:blue_ice" === dimension.getBlock({
-            x: location.x + 1,
-            y: location.y,
-            z: location.z
-        }).type.id &&
-        Lava.includes(dimension.getBlock({
-            x: location.x - 1,
-            y: location.y,
-            z: location.z
-        }).type.id)
-    ) isBasaltGenerator = true
+        "minecraft:blue_ice" === dimension.getBlock(locations[0]).type.id &&
+        Lava.includes(dimension.getBlock(locations[1]).type.id)
+    ) isBasaltGenerator = true;
     if (
-        "minecraft:blue_ice" === dimension.getBlock({
-            x: location.x - 1,
-            y: location.y,
-            z: location.z
-        }).type.id &&
-        Lava.includes(dimension.getBlock({
-            x: location.x + 1,
-            y: location.y,
-            z: location.z
-        }).type.id)
-    ) isBasaltGenerator = true
+        "minecraft:blue_ice" === dimension.getBlock(locations[1]).type.id &&
+        Lava.includes(dimension.getBlock(locations[0]).type.id)
+    ) isBasaltGenerator = true;
     if (
-        "minecraft:blue_ice" === dimension.getBlock({
-            x: location.x,
-            y: location.y,
-            z: location.z + 1
-        }).type.id &&
-        Lava.includes(dimension.getBlock({
-            x: location.x,
-            y: location.y,
-            z: location.z - 1
-        }).type.id)
-    ) isBasaltGenerator = true
+        "minecraft:blue_ice" === dimension.getBlock(locations[2]).type.id &&
+        Lava.includes(dimension.getBlock(locations[3]).type.id)
+    ) isBasaltGenerator = true;
     if (
-        "minecraft:blue_ice" === dimension.getBlock({
-            x: location.x,
-            y: location.y,
-            z: location.z - 1
-        }).type.id &&
-        Lava.includes(dimension.getBlock({
-            x: location.x,
-            y: location.y,
-            z: location.z + 1
-        }).type.id)
-    ) isBasaltGenerator = true
+        "minecraft:blue_ice" === dimension.getBlock(locations[3]).type.id &&
+        Lava.includes(dimension.getBlock(locations[2]).type.id)
+    ) isBasaltGenerator = true;
 
     if (
         dimension.getBlock({
@@ -177,43 +89,37 @@ world.afterEvents.playerBreakBlock.subscribe(event => {
             y: location.y - 1,
             z: location.z
         }).type.id !== "minecraft:soul_soil"
-    ) isBasaltGenerator = false
+    ) isBasaltGenerator = false;
 
-    if (
-        dimension.getBlock({
-            x: location.x,
-            y: location.y,
-            z: location.z
-        }).type.id !== "minecraft:air"
-    ) {
-        isCobblestoneGenerator = false
-        isBasaltGenerator = false
-        isCustomGenerator = false
+    if (dimension.getBlock(location).type.id !== "minecraft:air") {
+        isCobblestoneGenerator = false;
+        isBasaltGenerator = false;
+        isCustomGenerator = false;
     }
 
     if (isCobblestoneGenerator || isBasaltGenerator || isCustomGenerator) {
-        if (isCobblestoneGenerator && !config.cobblestone) return
-        if (isBasaltGenerator && !config.basalt) return
-        if (isCustomGenerator && !config.enableCustomGenerator) return
+        if (isCobblestoneGenerator && !config.cobblestone) return;
+        if (isBasaltGenerator && !config.basalt) return;
+        if (isCustomGenerator && !config.enableCustomGenerator) return;
 
         let blocks;
         if (config.enablePerDimensionGenerator && !isCustomGenerator) {
             switch (event.dimension.id) {
                 case "minecraft:overworld":
-                    blocks = config.overworld
+                    blocks = config.overworld;
                     break;
                 case "minecraft:nether":
-                    blocks = config.nether
+                    blocks = config.nether;
                     break;
                 case "minecraft:the_end":
-                    blocks = config.the_end
+                    blocks = config.the_end;
                     break;
                 default:
-                    blocks = config.blocks
+                    blocks = config.blocks;
             }
-        } else blocks = config.blocks
+        } else blocks = config.blocks;
 
-        if (isCustomGenerator && customGeneratorID !== -1) blocks = config.customGenerator[customGeneratorID].blocks
+        if (isCustomGenerator && customGeneratorID !== -1) blocks = config.customGenerator[customGeneratorID].blocks;
 
         let chances = 0;
         let selectedBlock = blocks[0].identifier;
@@ -226,6 +132,6 @@ world.afterEvents.playerBreakBlock.subscribe(event => {
             }
         }
 
-        dimension.runCommand(`setblock ${location.x} ${location.y} ${location.z} ${selectedBlock}`)
+        dimension.runCommand(`setblock ${location.x} ${location.y} ${location.z} ${selectedBlock}`);
     }
-})
+});
