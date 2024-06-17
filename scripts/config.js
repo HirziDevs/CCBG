@@ -4,7 +4,7 @@
 \ \ \____  \ \ \____  \ \  __<   \ \ \__ \  
  \ \_____\  \ \_____\  \ \_____\  \ \_____\ 
   \/_____/   \/_____/   \/_____/   \/_____/ 
-                                            
+										    
 A Custom Cobblestone and Basalt Generator By @HirziDevs
 
 */
@@ -77,6 +77,31 @@ config.the_end = [
 	{ identifier: "deepslate_diamond_ore", chance: 10 },
 	{ identifier: "deepslate_emerald_ore", chance: 4 },
 	{ identifier: "ancient_debris", chance: 1 }
+]
+
+/*
+Custom Generator
+
+To Enable Custom Generator, change config.enableCustomGenerator from "false" to "true" without the quotation mark
+To make the generator spawn block, you need to place a block in the middle and break it
+*/
+config.enableCustomGenerator = true
+
+config.customGenerator = [
+	{
+		left_block: ["minecraft:stonebrick"], right_block: ["minecraft:dripstone_block"],
+		blocks: [
+			{ identifier: "stone", chance: 14 },
+            { identifier: "coal_block", chance: 13 },
+            { identifier: "iron_block", chance: 13 },
+            { identifier: "copper_block", chance: 12 },
+            { identifier: "gold_block", chance: 11 },
+            { identifier: "redstone_block", chance: 11 },
+            { identifier: "lapis_block", chance: 11 },
+            { identifier: "diamond_block", chance: 10 },
+            { identifier: "emerald_block", chance: 5 }
+		]
+	}
 ]
 
 export default config
