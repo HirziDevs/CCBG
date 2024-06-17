@@ -21,23 +21,23 @@ config.cobblestone = true
 config.basalt = true
 
 /*
-Block Name & Chances
+Block Identifier & Chances
 
-The total chances should be 1
+The total chances should be 100
 If the block you entered does not appear, maybe you have entered an invalid block or there is a typo
-you can check the block name by using the command "/setblock" in game
+you can check the block identifier by using the command "/setblock" in game
 */
 config.blocks = [
-	{ name: "cobblestone", chance: 0.14 },
-	{ name: "coal_ore", chance: 0.13 },
-	{ name: "iron_ore", chance: 0.13 },
-	{ name: "copper_ore", chance: 0.12 },
-	{ name: "gold_ore", chance: 0.11 },
-	{ name: "redstone_ore", chance: 0.11 },
-	{ name: "lapis_ore", chance: 0.11 },
-	{ name: "diamond_ore", chance: 0.1 },
-	{ name: "emerald_ore", chance: 0.04 },
-	{ name: "ancient_debris", chance: 0.01 }
+	{ identifier: "cobblestone", chance: 14 },
+	{ identifier: "coal_ore", chance: 13 },
+	{ identifier: "iron_ore", chance: 13 },
+	{ identifier: "copper_ore", chance: 12 },
+	{ identifier: "gold_ore", chance: 11 },
+	{ identifier: "redstone_ore", chance: 11 },
+	{ identifier: "lapis_ore", chance: 11 },
+	{ identifier: "diamond_ore", chance: 10 },
+	{ identifier: "emerald_ore", chance: 4 },
+	{ identifier: "ancient_debris", chance: 1 }
 ]
 
 /*
@@ -48,35 +48,35 @@ To Enable Per Dimension Generator, change config.enablePerDimensionGenerator fro
 config.enablePerDimensionGenerator = false
 
 config.overworld = [
-	{ name: "cobblestone", chance: 0.14 },
-	{ name: "coal_ore", chance: 0.13 },
-	{ name: "iron_ore", chance: 0.13 },
-	{ name: "copper_ore", chance: 0.12 },
-	{ name: "gold_ore", chance: 0.11 },
-	{ name: "redstone_ore", chance: 0.11 },
-	{ name: "lapis_ore", chance: 0.11 },
-	{ name: "diamond_ore", chance: 0.1 },
-	{ name: "emerald_ore", chance: 0.05 }
+	{ identifier: "cobblestone", chance: 14 },
+	{ identifier: "coal_ore", chance: 13 },
+	{ identifier: "iron_ore", chance: 13 },
+	{ identifier: "copper_ore", chance: 12 },
+	{ identifier: "gold_ore", chance: 11 },
+	{ identifier: "redstone_ore", chance: 11 },
+	{ identifier: "lapis_ore", chance: 11 },
+	{ identifier: "diamond_ore", chance: 10 },
+	{ identifier: "emerald_ore", chance: 5 }
 ]
 
 config.nether = [
-	{ name: "basalt", chance: 0.4 },
-	{ name: "quartz_ore", chance: 0.3 },
-	{ name: "nether_gold_ore", chance: 0.2 },
-	{ name: "ancient_debris", chance: 0.1 },
+	{ identifier: "basalt", chance: 40 },
+	{ identifier: "quartz_ore", chance: 30 },
+	{ identifier: "nether_gold_ore", chance: 20 },
+	{ identifier: "ancient_debris", chance: 10 },
 ]
 
 config.the_end = [
-	{ name: "end_stone", chance: 0.14 },
-	{ name: "deepslate_coal_ore", chance: 0.13 },
-	{ name: "deepslate_iron_ore", chance: 0.13 },
-	{ name: "deepslate_copper_ore", chance: 0.12 },
-	{ name: "deepslate_gold_ore", chance: 0.11 },
-	{ name: "deepslate_redstone_ore", chance: 0.11 },
-	{ name: "deepslate_lapis_ore", chance: 0.11 },
-	{ name: "deepslate_diamond_ore", chance: 0.1 },
-	{ name: "deepslate_emerald_ore", chance: 0.04 },
-	{ name: "ancient_debris", chance: 0.01 }
+	{ identifier: "end_stone", chance: 14 },
+	{ identifier: "deepslate_coal_ore", chance: 13 },
+	{ identifier: "deepslate_iron_ore", chance: 13 },
+	{ identifier: "deepslate_copper_ore", chance: 12 },
+	{ identifier: "deepslate_gold_ore", chance: 11 },
+	{ identifier: "deepslate_redstone_ore", chance: 11 },
+	{ identifier: "deepslate_lapis_ore", chance: 11 },
+	{ identifier: "deepslate_diamond_ore", chance: 10 },
+	{ identifier: "deepslate_emerald_ore", chance: 4 },
+	{ identifier: "ancient_debris", chance: 1 }
 ]
 
 export default config

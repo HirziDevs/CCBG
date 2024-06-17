@@ -155,12 +155,12 @@ world.afterEvents.playerBreakBlock.subscribe(event => {
             }
         } else blocks = config.blocks
         let chances = 0;
-        let selectedBlock = blocks[0].name;
+        let selectedBlock = blocks[0].identifier;
 
         for (const block of blocks) {
             chances += block.chance;
-            if (Math.random() < chances) {
-                selectedBlock = block.name;
+            if (Math.random() * 100 < chances) {
+                selectedBlock = block.identifier;
                 break;
             }
         }
