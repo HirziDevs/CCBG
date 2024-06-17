@@ -85,7 +85,7 @@ Custom Generator
 To Enable Custom Generator, change config.enableCustomGenerator from "false" to "true" without the quotation mark
 To make the generator spawn block, you need to place a block in the middle and break it
 */
-config.enableCustomGenerator = true
+config.enableCustomGenerator = false
 
 config.customGenerator = [
 	{
