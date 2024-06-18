@@ -21,6 +21,14 @@ config.cobblestone = true
 config.basalt = true
 
 /*
+Set Block Delay
+
+Specify the amount of time, in seconds, to wait before spawning a block.
+You can set it to values such as 1 or 0.1, etc. if you put negative number it will be set to 0.1
+*/
+config.delay = 0.5
+
+/*
 Block Identifier & Chances
 
 The total chances should be 100

@@ -8,7 +8,7 @@
 A Custom Cobblestone and Basalt Generator By @HirziDevs
 
 */
-import { world } from '@minecraft/server';
+import { system, world } from '@minecraft/server';
 import config from './config';
 
 world.afterEvents.playerBreakBlock.subscribe(event => {
@@ -108,7 +108,7 @@ world.afterEvents.playerBreakBlock.subscribe(event => {
         }).type.id !== "minecraft:soul_soil"
     ) isBasaltGenerator = false;
 
-    if (dimension.getBlock(location).type.id !== "minecraft:air") {
+    if (!dimension.getBlock(location).isAir) {
         isCobblestoneGenerator = false;
         isBasaltGenerator = false;
         isCustomGenerator = false;
@@ -148,7 +148,10 @@ world.afterEvents.playerBreakBlock.subscribe(event => {
                 break;
             }
         }
-
-        dimension.runCommand(`setblock ${location.x} ${location.y} ${location.z} ${selectedBlock}`);
+        
+        config.delay = config.delay < 0 ? 0.1 : config.delay;
+        system.runTimeout(() => {
+            dimension.runCommand(`setblock ${location.x} ${location.y} ${location.z} ${selectedBlock}`)
+        }, config.delay * 20);
     }
 });
