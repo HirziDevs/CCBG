@@ -12,6 +12,19 @@ Check this video:
   <img alt="CCBG Youtube Preview" src="https://api.mcpedl.com/storage/submissions/27564/105/banner_1-520x245.png" width="555"/>
 </a>
 
+## Enable Beta APIs Experiment
+CCBG are using Beta APIs to make the generator working, please enable it to make this addons works
+
+### New World Create/Edit Menu
+Go to World Create/Edit Menu » Scroll Side Menu » Experiments Side Menu » Add-on Creators » Beta APIs
+
+<img alt="New World Create/Edit Menu" src="https://media.forgecdn.net/attachments/description/1035052/description_aef4c20f-85a8-4d4b-9706-e5415f075089.png" width="555"/>
+
+### Old World Create/Edit Menu
+Go to World Create/Edit Menu » Game Side Menu » Scroll » Experiments » Beta APIs
+
+<img alt="Old World Create/Edit Menu" src="https://media.forgecdn.net/attachments/description/1035052/description_758e4759-b029-4451-84f0-f0bd7394d152.png" width="555"/>
+
 ## Configuration
 You can customize which blocks will appear and their chances to appear in the config.js file located in the script folder (CCBG/scripts/config.js).
 
@@ -19,10 +32,10 @@ If you have already added this addon to a world and want to change the config, y
 
 ### World Behavior Packs Location
 Android:
-_Android/data/com.mojang.minecraftpe/files/games/com.mojang/minecraftWorlds/(find your world folder)/behavior_packs/CCBG/scripts/config.js_
+_Android\data\com.mojang.minecraftpe\files\games\com.mojang\minecraftWorlds\\(find your world folder)\behavior_packs\CCBG\scripts\config.js_
 
 Windows:
-_(User)/AppData/Local/Packages/Microsoft.MinecraftUWP_8wekb3d8bbwe/LocalState/games/com.mojang/minecraftWorlds/(find your world folder)/behavior_packs/CCBG/scripts/config.js_
+_(User)\AppData\Local\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds\\(find your world folder)\behavior_packs\CCBG\scripts\config.js_
 
 ### Enable or Disable Generator
 You can enable or disable cobblestone or basalt in this configuration.
@@ -58,5 +71,11 @@ Do you want a custom block from another addon to be spawned in the generator? Yo
 <img alt="/setblock for custom blocks" src="https://media.forgecdn.net/attachments/description/1035052/description_e3486318-62c3-46b9-95d3-6dfe085d3418.jpg" width="555"/>
 
 <img alt="Custom Block in CCBG" src="https://media.forgecdn.net/attachments/description/1035052/description_1570aa7a-6e1f-4532-a0a1-5f60877b1f77.png" width="555"/>
+
+### Configure Block Delay
+Specify the amount of time, in seconds, to wait before spawning a block. You can set it to values such as 1 or 0.1, etc. if you put negative number it will be set to 0.1
+
+<img alt="Block Delay in CCBG" src="https://media.forgecdn.net/attachments/description/1035052/description_8e697255-9817-45ce-a06c-edbf2ab651f8.png" width="555"/>
+
 
 Thanks for using my addon! If you want to share this addon, please use this page. Thanks!
