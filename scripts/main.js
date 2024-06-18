@@ -67,6 +67,23 @@ world.afterEvents.playerBreakBlock.subscribe(event => {
     ) isCobblestoneGenerator = true;
 
     if (
+        dimension.getBlock(locations[0]).isWaterlogged &&
+        Lava.includes(dimension.getBlock(locations[1]).type.id)
+    ) isCobblestoneGenerator = true;
+    if (
+        dimension.getBlock(locations[1]).isWaterlogged &&
+        Lava.includes(dimension.getBlock(locations[0]).type.id)
+    ) isCobblestoneGenerator = true;
+    if (
+        dimension.getBlock(locations[2]).isWaterlogged &&
+        Lava.includes(dimension.getBlock(locations[3]).type.id)
+    ) isCobblestoneGenerator = true;
+    if (
+        dimension.getBlock(locations[3]).isWaterlogged &&
+        Lava.includes(dimension.getBlock(locations[2]).type.id)
+    ) isCobblestoneGenerator = true;
+
+    if (
         "minecraft:blue_ice" === dimension.getBlock(locations[0]).type.id &&
         Lava.includes(dimension.getBlock(locations[1]).type.id)
     ) isBasaltGenerator = true;
