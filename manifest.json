@@ -6,10 +6,10 @@
 		"license": "MIT"
 	},
 	"header": {
-		"name": "§eCCBG §d[1.1.0]§f",
+		"name": "§eCCBG §d[1.1.1]§f",
 		"description": "Customize your Cobblestone and Basalt Generator!\nAddons By: §bHirziDevs§f",
 		"uuid": "15c4dbf1-0871-42e5-8b04-114daa5b7ab4",
-		"version": [1, 1, 0],
+		"version": [1, 1, 1],
 		"min_engine_version": [1, 21, 0]
 	},
 	"modules": [
