@@ -138,30 +138,32 @@ function Generator(generatorBlock) {
 
         if (isCustomGenerator && customGeneratorID !== -1) blocks = config.customGenerator[customGeneratorID].blocks;
 
-        let chances = 0;
-        let selectedBlock = blocks[0].identifier;
+        if (blocks.length > 0) {
+            let chances = 0;
+            let selectedBlock = blocks[0].identifier;
 
-        for (const block of blocks) {
-            chances += block.chance;
-            if (Math.random() * 100 < chances) {
-                selectedBlock = block.identifier;
-                break;
+            for (const block of blocks) {
+                chances += block.chance;
+                if (Math.random() * 100 < chances) {
+                    selectedBlock = block.identifier;
+                    break;
+                }
             }
-        }
 
-        config.delay = config.delay < 0 ? 0.1 : config.delay;
-        system.runTimeout(() => {
-            dimension.runCommand(`setblock ${location.x} ${location.y} ${location.z} ${selectedBlock}`)
-        }, config.delay * 20);
-    }
-}
+            config.delay = config.delay < 0 ? 0.1 : config.delay;
+            system.runTimeout(() => {
+                dimension.runCommand(`setblock ${location.x} ${location.y} ${location.z} ${selectedBlock}`);
+            }, config.delay * 20);
+        };
+    };
+};
 
-if(config.player || config.player === null || config.player === undefined) world.afterEvents.playerBreakBlock.subscribe(event => Generator(event.block));
+if (config.player || config.player === null || config.player === undefined) world.afterEvents.playerBreakBlock.subscribe(event => Generator(event.block));
 
-if(config.explosion || config.player === null || config.player === undefined) world.afterEvents.blockExplode.subscribe(event => Generator(event.block));
+if (config.explosion || config.player === null || config.player === undefined) world.afterEvents.blockExplode.subscribe(event => Generator(event.block));
 
-if(config.piston || config.player === null || config.player === undefined) world.afterEvents.pistonActivate.subscribe(event => {
-    const { dimension, location } = event.block
+if (config.piston || config.player === null || config.player === undefined) world.afterEvents.pistonActivate.subscribe(event => {
+    const { dimension, location } = event.block;
 
     const locations = [
         { x: location.x + 1, y: location.y, z: location.z },
@@ -170,10 +172,10 @@ if(config.piston || config.player === null || config.player === undefined) world
         { x: location.x, y: location.y, z: location.z - 1 },
         { x: location.x, y: location.y + 1, z: location.z },
         { x: location.x, y: location.y - 1, z: location.z }
-    ]
+    ];
 
     for (const blockLocation of locations) {
-        const block = dimension.getBlock(blockLocation)
-        if (block.isAir) Generator(block)
-    }
+        const block = dimension.getBlock(blockLocation);
+        if (block.isAir) Generator(block);
+    };
 });

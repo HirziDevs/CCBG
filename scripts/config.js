@@ -8,7 +8,7 @@
 A Custom Cobblestone and Basalt Generator By @HirziDevs
 You can view all the documentation at https://ccbg.znproject.my.id
 */
-const config = {}
+const config = {};
 
 /*
 Generator
@@ -118,4 +118,4 @@ config.customGenerator = [
 	}
 ]
 
-export default config
+export default config;
