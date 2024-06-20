@@ -22,7 +22,7 @@ config.basalt = true
 /*
 Generator Event
 
-Enable or disable the Generator if the block is destroyed or moved by player, explosion or piston
+Enable or disable the Generator if the block is destroyed or moved by a player, an explosion or a piston
 by changing this setting to "true" to enable it or to "false" to disable it. without quotation mark
 */
 config.player = true
