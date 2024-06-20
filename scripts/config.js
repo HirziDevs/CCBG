@@ -6,22 +6,31 @@
   \/_____/   \/_____/   \/_____/   \/_____/ 
 										    
 A Custom Cobblestone and Basalt Generator By @HirziDevs
-
+You can view all the documentation at https://ccbg.znproject.my.id
 */
 const config = {}
 
 /*
 Generator
-Enable or Disable Cobblestone and Basalt Generator
-change to "true" to enable
-change to "false" to disable
-without quotation mark
+
+Enable or disable the Cobblestone and Basalt Generator by changing this setting 
+to "true" to enable it or to "false" to disable it. without quotation mark
 */
 config.cobblestone = true
 config.basalt = true
 
 /*
-Set Block Delay
+Generator Event
+
+Enable or disable the Generator if the block is destroyed or moved by player, explosion or piston
+by changing this setting to "true" to enable it or to "false" to disable it. without quotation mark
+*/
+config.player = true
+config.explosion = true
+config.piston = true
+
+/*
+Block Spawn Delay
 
 Specify the amount of time, in seconds, to wait before spawning a block.
 You can set it to values such as 1 or 0.1, etc. if you put negative number it will be set to 0.1
@@ -51,7 +60,8 @@ config.blocks = [
 /*
 Per Dimension Generator
 
-To Enable Per Dimension Generator, change config.enablePerDimensionGenerator from "false" to "true" without the quotation mark
+Enable or disable Per Dimension Generator by changing config.enablePerDimensionGenerator 
+to "true" to enable it or to "false" to disable it. without quotation mark
 */
 config.enablePerDimensionGenerator = false
 
@@ -75,23 +85,19 @@ config.nether = [
 ]
 
 config.the_end = [
-	{ identifier: "end_stone", chance: 14 },
-	{ identifier: "deepslate_coal_ore", chance: 13 },
-	{ identifier: "deepslate_iron_ore", chance: 13 },
-	{ identifier: "deepslate_copper_ore", chance: 12 },
-	{ identifier: "deepslate_gold_ore", chance: 11 },
-	{ identifier: "deepslate_redstone_ore", chance: 11 },
-	{ identifier: "deepslate_lapis_ore", chance: 11 },
-	{ identifier: "deepslate_diamond_ore", chance: 10 },
-	{ identifier: "deepslate_emerald_ore", chance: 4 },
-	{ identifier: "ancient_debris", chance: 1 }
+	{ identifier: "end_stone", chance: 20 },
+	{ identifier: "deepslate_iron_ore", chance: 20 },
+	{ identifier: "deepslate_gold_ore", chance: 17.5 },
+	{ identifier: "deepslate_diamond_ore", chance: 17.5 },
+	{ identifier: "deepslate_emerald_ore", chance: 15 },
+	{ identifier: "ancient_debris", chance: 10 }
 ]
 
 /*
 Custom Generator
 
-To Enable Custom Generator, change config.enableCustomGenerator from "false" to "true" without the quotation mark
-To make the generator spawn block, you need to place a block in the middle and break it
+Enable or disable  Custom Generator by changing config.enableCustomGenerator 
+to "true" to enable it or to "false" to disable it. without quotation mark
 */
 config.enableCustomGenerator = false
 

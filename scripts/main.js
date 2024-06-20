@@ -6,13 +6,13 @@
   \/_____/   \/_____/   \/_____/   \/_____/ 
                                                 
 A Custom Cobblestone and Basalt Generator By @HirziDevs
-
+You can view all the documentation at https://ccbg.znproject.my.id
 */
 import { system, world } from '@minecraft/server';
 import config from './config';
 
-world.afterEvents.playerBreakBlock.subscribe(event => {
-    const { dimension, location } = event.block;
+function Generator(generatorBlock) {
+    const { dimension, location } = generatorBlock;
 
     const locations = [
         { x: location.x + 1, y: location.y, z: location.z },
@@ -121,7 +121,7 @@ world.afterEvents.playerBreakBlock.subscribe(event => {
 
         let blocks;
         if (config.enablePerDimensionGenerator && !isCustomGenerator) {
-            switch (event.dimension.id) {
+            switch (dimension.id) {
                 case "minecraft:overworld":
                     blocks = config.overworld;
                     break;
@@ -148,10 +148,30 @@ world.afterEvents.playerBreakBlock.subscribe(event => {
                 break;
             }
         }
-        
+
         config.delay = config.delay < 0 ? 0.1 : config.delay;
         system.runTimeout(() => {
             dimension.runCommand(`setblock ${location.x} ${location.y} ${location.z} ${selectedBlock}`)
         }, config.delay * 20);
+    }
+}
+
+if(config.player || config.player === null || config.player === undefined) world.afterEvents.playerBreakBlock.subscribe(event => Generator(event.block));
+
+if(config.explosion || config.player === null || config.player === undefined) world.afterEvents.blockExplode.subscribe(event => Generator(event.block));
+
+if(config.piston || config.player === null || config.player === undefined) world.afterEvents.pistonActivate.subscribe(event => {
+    const { dimension, location } = event.block
+
+    const locations = [
+        { x: location.x + 1, y: location.y, z: location.z },
+        { x: location.x - 1, y: location.y, z: location.z },
+        { x: location.x, y: location.y, z: location.z + 1 },
+        { x: location.x, y: location.y, z: location.z - 1 }
+    ]
+
+    for (const blockLocation of locations) {
+        const block = dimension.getBlock(blockLocation)
+        if (block.isAir) Generator(block)
     }
 });
