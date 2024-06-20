@@ -6,6 +6,9 @@ Customize your cobblestone and basalt generator with this addon! You can make yo
 Why choose this addon? Because _it does not add additional blocks or entities that need to be crafted first and also doesn't use command blocks to create a custom generator! This addon also does not use player.json, so it will work with other addons!_ You just need to **make a cobblestone and basalt generator as usual**, and it will work straight away! 
 
 ## Preview
+
+<img alt="CCBG Preview" src="https://media.forgecdn.net/attachments/description/1035052/description_2e8a7c71-2bbc-4cc9-944f-587d9d7d3267.jpg" width="555"/>
+
 Check this video:
 
 <a href="https://www.youtube.com/watch?v=sDB8kqgZz1w">
