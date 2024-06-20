@@ -167,7 +167,9 @@ if(config.piston || config.player === null || config.player === undefined) world
         { x: location.x + 1, y: location.y, z: location.z },
         { x: location.x - 1, y: location.y, z: location.z },
         { x: location.x, y: location.y, z: location.z + 1 },
-        { x: location.x, y: location.y, z: location.z - 1 }
+        { x: location.x, y: location.y, z: location.z - 1 },
+        { x: location.x, y: location.y + 1, z: location.z },
+        { x: location.x, y: location.y - 1, z: location.z }
     ]
 
     for (const blockLocation of locations) {
