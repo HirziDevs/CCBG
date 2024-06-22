@@ -143,7 +143,7 @@ config.customGenerator = [
 		]
 	},
 	{
-		left_block: ["minecraft:flowing_water", "minecraft:water"],
+		left_block: ["minecraft:flowing_water", "minecraft:water", "WATERLOGGED"],
 		right_block: ["minecraft:flowing_lava", "minecraft:lava"],
 		under_block: ["minecraft:netherite_block"],
 		blocks: [
