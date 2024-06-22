@@ -209,7 +209,7 @@ function Generator(generatorBlock, gamemode, tool) {
                 }
             }
 
-            selectedBlock = blocks.filter(block => block.chance === selectedBlock)[Math.floor(Math.random() * blocks.filter(block => block.chance === selectedBlock).length)]
+            selectedBlock = blocks.filter(block => block.chance === selectedBlock)[Math.floor(Math.random() * blocks.filter(block => block.chance === selectedBlock).length)].identifier
 
             config.delay = config.delay < 0 ? 0.1 : config.delay;
             system.runTimeout(() => {
@@ -232,7 +232,7 @@ function Generator(generatorBlock, gamemode, tool) {
                     }
                 }
 
-                selectedMob = mobs.filter(mob => mob.chance === selectedMob)[Math.floor(Math.random() * mobs.filter(mob => mob.chance === selectedMob).length)]
+                selectedMob = mobs.filter(mob => mob.chance === selectedMob)[Math.floor(Math.random() * mobs.filter(mob => mob.chance === selectedMob).length)].identifier
 
                 system.runTimeout(() => {
                     if (selectedMob !== "nothing") dimension.runCommand(`summon ${selectedMob} ${location.x} ${location.y + 1} ${location.z}`);
