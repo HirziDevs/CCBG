@@ -15,12 +15,12 @@ function Generator(generatorBlock) {
     const { dimension, location } = generatorBlock;
 
     const locations = [
-        { x: location.x + 1, y: location.y, z: location.z },
-        { x: location.x - 1, y: location.y, z: location.z },
-        { x: location.x, y: location.y, z: location.z + 1 },
-        { x: location.x, y: location.y, z: location.z - 1 },
-        { x: location.x, y: location.y + 1, z: location.z },
-        { x: location.x, y: location.y - 1, z: location.z }
+        dimension.getBlock({ x: location.x + 1, y: location.y, z: location.z }),
+        dimension.getBlock({ x: location.x - 1, y: location.y, z: location.z }),
+        dimension.getBlock({ x: location.x, y: location.y, z: location.z + 1 }),
+        dimension.getBlock({ x: location.x, y: location.y, z: location.z - 1 }),
+        dimension.getBlock({ x: location.x, y: location.y + 1, z: location.z }),
+        dimension.getBlock({ x: location.x, y: location.y - 1, z: location.z })
     ];
 
     const Water = ["minecraft:flowing_water", "minecraft:water"];
@@ -36,25 +36,25 @@ function Generator(generatorBlock) {
             generator.right_block && Array.isArray(generator.right_block) && generator.right_block.length > 0
         ) {
             if (
-                generator.left_block.includes(dimension.getBlock(locations[0]).type.id) &&
-                generator.right_block.includes(dimension.getBlock(locations[1]).type.id)
+                generator.left_block.includes(locations[0].type.id) &&
+                generator.right_block.includes(locations[1].type.id)
             ) isCustomGenerator = true;
             if (
-                generator.left_block.includes(dimension.getBlock(locations[1]).type.id) &&
-                generator.right_block.includes(dimension.getBlock(locations[0]).type.id)
+                generator.left_block.includes(locations[1].type.id) &&
+                generator.right_block.includes(locations[0].type.id)
             ) isCustomGenerator = true;
             if (
-                generator.left_block.includes(dimension.getBlock(locations[2]).type.id) &&
-                generator.right_block.includes(dimension.getBlock(locations[3]).type.id)
+                generator.left_block.includes(locations[2].type.id) &&
+                generator.right_block.includes(locations[3].type.id)
             ) isCustomGenerator = true;
             if (
-                generator.left_block.includes(dimension.getBlock(locations[3]).type.id) &&
-                generator.right_block.includes(dimension.getBlock(locations[2]).type.id)
+                generator.left_block.includes(locations[3].type.id) &&
+                generator.right_block.includes(locations[2].type.id)
             ) isCustomGenerator = true;
 
             if (
                 generator.under_block && Array.isArray(generator.under_block) && generator.under_block.length > 0 &&
-                !generator.under_block.includes(dimension.getBlock(locations[5]).type.id)
+                !generator.under_block.includes(locations[5].type.id)
             ) isCustomGenerator = false
 
             if (isCustomGenerator) customGeneratorID = i
@@ -62,57 +62,57 @@ function Generator(generatorBlock) {
     });
 
     if (
-        Water.includes(dimension.getBlock(locations[0]).type.id) &&
-        Lava.includes(dimension.getBlock(locations[1]).type.id)
+        Water.includes(locations[0].type.id) &&
+        Lava.includes(locations[1].type.id)
     ) isCobblestoneGenerator = true;
     if (
-        Water.includes(dimension.getBlock(locations[1]).type.id) &&
-        Lava.includes(dimension.getBlock(locations[0]).type.id)
+        Water.includes(locations[1].type.id) &&
+        Lava.includes(locations[0].type.id)
     ) isCobblestoneGenerator = true;
     if (
-        Water.includes(dimension.getBlock(locations[2]).type.id) &&
-        Lava.includes(dimension.getBlock(locations[3]).type.id)
+        Water.includes(locations[2].type.id) &&
+        Lava.includes(locations[3].type.id)
     ) isCobblestoneGenerator = true;
     if (
-        Water.includes(dimension.getBlock(locations[3]).type.id) &&
-        Lava.includes(dimension.getBlock(locations[2]).type.id)
-    ) isCobblestoneGenerator = true;
-
-    if (
-        dimension.getBlock(locations[0]).isWaterlogged &&
-        Lava.includes(dimension.getBlock(locations[1]).type.id)
-    ) isCobblestoneGenerator = true;
-    if (
-        dimension.getBlock(locations[1]).isWaterlogged &&
-        Lava.includes(dimension.getBlock(locations[0]).type.id)
-    ) isCobblestoneGenerator = true;
-    if (
-        dimension.getBlock(locations[2]).isWaterlogged &&
-        Lava.includes(dimension.getBlock(locations[3]).type.id)
-    ) isCobblestoneGenerator = true;
-    if (
-        dimension.getBlock(locations[3]).isWaterlogged &&
-        Lava.includes(dimension.getBlock(locations[2]).type.id)
+        Water.includes(locations[3].type.id) &&
+        Lava.includes(locations[2].type.id)
     ) isCobblestoneGenerator = true;
 
     if (
-        "minecraft:blue_ice" === dimension.getBlock(locations[0]).type.id &&
-        Lava.includes(dimension.getBlock(locations[1]).type.id)
+        locations[0].isWaterlogged &&
+        Lava.includes(locations[1].type.id)
+    ) isCobblestoneGenerator = true;
+    if (
+        locations[1].isWaterlogged &&
+        Lava.includes(locations[0].type.id)
+    ) isCobblestoneGenerator = true;
+    if (
+        locations[2].isWaterlogged &&
+        Lava.includes(locations[3].type.id)
+    ) isCobblestoneGenerator = true;
+    if (
+        locations[3].isWaterlogged &&
+        Lava.includes(locations[2].type.id)
+    ) isCobblestoneGenerator = true;
+
+    if (
+        "minecraft:blue_ice" === locations[0].type.id &&
+        Lava.includes(locations[1].type.id)
     ) isBasaltGenerator = true;
     if (
-        "minecraft:blue_ice" === dimension.getBlock(locations[1]).type.id &&
-        Lava.includes(dimension.getBlock(locations[0]).type.id)
+        "minecraft:blue_ice" === locations[1].type.id &&
+        Lava.includes(locations[0].type.id)
     ) isBasaltGenerator = true;
     if (
-        "minecraft:blue_ice" === dimension.getBlock(locations[2]).type.id &&
-        Lava.includes(dimension.getBlock(locations[3]).type.id)
+        "minecraft:blue_ice" === locations[2].type.id &&
+        Lava.includes(locations[3].type.id)
     ) isBasaltGenerator = true;
     if (
-        "minecraft:blue_ice" === dimension.getBlock(locations[3]).type.id &&
-        Lava.includes(dimension.getBlock(locations[2]).type.id)
+        "minecraft:blue_ice" === locations[3].type.id &&
+        Lava.includes(locations[2].type.id)
     ) isBasaltGenerator = true;
 
-    if (dimension.getBlock(locations[5]).type.id !== "minecraft:soul_soil")
+    if (locations[5].type.id !== "minecraft:soul_soil")
         isBasaltGenerator = false;
 
     if (!dimension.getBlock(location).isAir) {
@@ -173,16 +173,15 @@ if (config.piston || config.player === null || config.player === undefined) worl
     const { dimension, location } = event.block;
 
     const locations = [
-        { x: location.x + 1, y: location.y, z: location.z },
-        { x: location.x - 1, y: location.y, z: location.z },
-        { x: location.x, y: location.y, z: location.z + 1 },
-        { x: location.x, y: location.y, z: location.z - 1 },
-        { x: location.x, y: location.y + 1, z: location.z },
-        { x: location.x, y: location.y - 1, z: location.z }
+        dimension.getBlock({ x: location.x + 1, y: location.y, z: location.z }),
+        dimension.getBlock({ x: location.x - 1, y: location.y, z: location.z }),
+        dimension.getBlock({ x: location.x, y: location.y, z: location.z + 1 }),
+        dimension.getBlock({ x: location.x, y: location.y, z: location.z - 1 }),
+        dimension.getBlock({ x: location.x, y: location.y + 1, z: location.z }),
+        dimension.getBlock({ x: location.x, y: location.y - 1, z: location.z })
     ];
 
-    for (const blockLocation of locations) {
-        const block = dimension.getBlock(blockLocation);
+    for (const block of locations) {
         if (block.isAir) Generator(block);
     };
 });
