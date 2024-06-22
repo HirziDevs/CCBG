@@ -115,6 +115,7 @@ Custom Generator
 
 Enable or disable  Custom Generator by changing config.enableCustomGenerator 
 to "true" to enable it or to "false" to disable it. without quotation mark
+add "WATERLOGGED" to left/right/under blocks to support waterlogged blocks
 */
 config.enableCustomGenerator = false
 

@@ -52,6 +52,43 @@ function Generator(generatorBlock, tool) {
                 generator.right_block.includes(locations[2].type.id)
             ) isCustomGenerator = true;
 
+            
+            if (
+                generator.left_block.includes("WATERLOGGED") && locations[0].isWaterlogged &&
+                generator.right_block.includes(locations[1].type.id)
+            ) isCustomGenerator = true;
+            if (
+                generator.left_block.includes("WATERLOGGED") && locations[1].isWaterlogged &&
+                generator.right_block.includes(locations[0].type.id)
+            ) isCustomGenerator = true;
+            if (
+                generator.left_block.includes("WATERLOGGED") && locations[2].isWaterlogged &&
+                generator.right_block.includes(locations[3].type.id)
+            ) isCustomGenerator = true;
+            if (
+                generator.left_block.includes("WATERLOGGED") && locations[3].isWaterlogged &&
+                generator.right_block.includes(locations[2].type.id)
+            ) isCustomGenerator = true;
+
+
+            if (
+                generator.left_block.includes(locations[0].type.id) &&
+                (generator.right_block.includes("WATERLOGGED") && locations[1].isWaterlogged)
+            ) isCustomGenerator = true;
+            if (
+                generator.left_block.includes(locations[1].type.id) &&
+                (generator.right_block.includes("WATERLOGGED") && locations[0].isWaterlogged)
+            ) isCustomGenerator = true;
+            if (
+                generator.left_block.includes(locations[2].type.id) &&
+                (generator.right_block.includes("WATERLOGGED") && locations[3].isWaterlogged)
+            ) isCustomGenerator = true;
+            if (
+                generator.left_block.includes(locations[3].type.id) &&
+                (generator.right_block.includes("WATERLOGGED") && locations[2].isWaterlogged)
+            ) isCustomGenerator = true;
+
+
             if (
                 generator.under_block && Array.isArray(generator.under_block) && generator.under_block.length > 0 &&
                 !generator.under_block.includes(locations[5].type.id)
