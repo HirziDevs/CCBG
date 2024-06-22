@@ -117,6 +117,19 @@ config.customGenerator = [
             { identifier: "diamond_block", chance: 10 },
             { identifier: "emerald_block", chance: 5 }
 		]
+	},
+	{
+		left_block: ["minecraft:flowing_water", "minecraft:water"],
+		right_block: ["minecraft:flowing_lava", "minecraft:lava"],
+		under_block: ["minecraft:netherite_block"],
+		blocks: [
+			{ identifier: "stone", chance: 20 },
+            { identifier: "iron_block", chance: 20 },
+            { identifier: "gold_block", chance: 17.5 },
+            { identifier: "diamond_block", chance: 17.5 },
+            { identifier: "emerald_block", chance: 15 },
+            { identifier: "netherite_block", chance: 10 }
+		]
 	}
 ]
 
