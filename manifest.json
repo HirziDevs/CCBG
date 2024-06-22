@@ -14,11 +14,6 @@
 	},
 	"modules": [
 		{
-			"type": "data",
-			"uuid": "c6c8077a-9d2c-41d0-bf61-007ddd13fb3e",
-			"version": [1, 0, 0]
-		},
-		{
 			"type": "script",
 			"uuid": "8df2bb30-ab8b-4797-bc58-c589b64fd5f7",
 			"version": [1, 0, 0],
