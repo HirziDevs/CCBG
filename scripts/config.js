@@ -32,10 +32,10 @@ config.piston = true
 /*
 Tools
 
-Tools that must be used to break the block to make the generator spawn the blocks
-You can disable it by removing all the items in the array
+Tools that must be used to break the block in order to make the generator spawn 
+the blocks can be disabled by removing all the items in the array.
 
-example code to disable tools: 
+Example code to disable tools:
 config.tools = []
 */
 config.tools = [
