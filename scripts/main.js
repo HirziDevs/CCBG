@@ -162,7 +162,7 @@ function Generator(generatorBlock, gamemode, tool) {
     if (isCobblestoneGenerator || isBasaltGenerator || isCustomGenerator) {
         if (isCobblestoneGenerator && !config.cobblestone) return;
         if (isBasaltGenerator && !config.basalt) return;
-        if (isCustomGenerator && !config.enableCustomGenerator) return;
+        if (!isCobblestoneGenerator && !isBasaltGenerator && isCustomGenerator && !config.enableCustomGenerator) return;
 
         if (
             (isCobblestoneGenerator || isBasaltGenerator) && gamemode === "survival" && tool &&
