@@ -41,7 +41,7 @@ config.tools = []
 config.tools = [
 	"minecraft:stone_pickaxe",
 	"minecraft:iron_pickaxe",
-	"minecraft:gold_pickaxe",
+	"minecraft:golden_pickaxe",
 	"minecraft:diamond_pickaxe",
 	"minecraft:netherite_pickaxe",
 ]
@@ -137,7 +137,7 @@ config.customGenerator = [
 		],
 		tools: [
 			"minecraft:iron_pickaxe",
-			"minecraft:gold_pickaxe",
+			"minecraft:golden_pickaxe",
 			"minecraft:diamond_pickaxe",
 			"minecraft:netherite_pickaxe",
 		]
@@ -156,7 +156,7 @@ config.customGenerator = [
 		],
 		tools: [
 			"minecraft:iron_pickaxe",
-			"minecraft:gold_pickaxe",
+			"minecraft:golden_pickaxe",
 			"minecraft:diamond_pickaxe",
 			"minecraft:netherite_pickaxe",
 		]
