@@ -32,10 +32,12 @@ CCBG are using Beta APIs to make the generator working, please enable it to make
     - [Tools](https://ccbg.znproject.my.id/configuration/tools) 
     - [Block Spawn Delay](https://ccbg.znproject.my.id/configuration/block-spawn-delay) 
     - [Generator Blocks and Chances](https://ccbg.znproject.my.id/configuration/generator-blocks-and-chances) 
+    - [Summon Mobs](https://ccbg.znproject.my.id/configuration/summon-mobs) 
     - [Per Dimension Generator](https://ccbg.znproject.my.id/configuration/per-dimension-generator) 
     - [Custom Generator](https://ccbg.znproject.my.id/configuration/custom-generator) 
 - Additional Information
-    - [Adding Block from Addons](https://ccbg.znproject.my.id/additional-information/adding-block-from-addons) 
+    - [Adding Blocks from Addons](https://ccbg.znproject.my.id/additional-information/adding-blocks-from-addons) 
     - [Adding Tools from Addons](https://ccbg.znproject.my.id/additional-information/adding-tools-from-addons) 
+    - [Adding Mobs from Addons](https://ccbg.znproject.my.id/additional-information/adding-mobs-from-addons) 
 
 Thanks for using my addon! If you want to support this addon, you can give this repository a star and share this page!
