@@ -103,7 +103,9 @@ config.enableCustomGenerator = false
 
 config.customGenerator = [
 	{
-		left_block: ["minecraft:stonebrick"], right_block: ["minecraft:dripstone_block"],
+		left_block: ["minecraft:stone"],
+		right_block: ["minecraft:dripstone_block"],
+		under_block: [],
 		blocks: [
 			{ identifier: "stone", chance: 14 },
             { identifier: "coal_block", chance: 13 },

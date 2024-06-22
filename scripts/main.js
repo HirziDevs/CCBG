@@ -18,7 +18,9 @@ function Generator(generatorBlock) {
         { x: location.x + 1, y: location.y, z: location.z },
         { x: location.x - 1, y: location.y, z: location.z },
         { x: location.x, y: location.y, z: location.z + 1 },
-        { x: location.x, y: location.y, z: location.z - 1 }
+        { x: location.x, y: location.y, z: location.z - 1 },
+        { x: location.x, y: location.y + 1, z: location.z },
+        { x: location.x, y: location.y - 1, z: location.z }
     ];
 
     const Water = ["minecraft:flowing_water", "minecraft:water"];
@@ -30,23 +32,33 @@ function Generator(generatorBlock) {
 
     config.customGenerator.forEach((generator, i) => {
         if (
-            generator.left_block.includes(dimension.getBlock(locations[0]).type.id) &&
-            generator.right_block.includes(dimension.getBlock(locations[1]).type.id)
-        ) isCustomGenerator = true;
-        if (
-            generator.left_block.includes(dimension.getBlock(locations[1]).type.id) &&
-            generator.right_block.includes(dimension.getBlock(locations[0]).type.id)
-        ) isCustomGenerator = true;
-        if (
-            generator.left_block.includes(dimension.getBlock(locations[2]).type.id) &&
-            generator.right_block.includes(dimension.getBlock(locations[3]).type.id)
-        ) isCustomGenerator = true;
-        if (
-            generator.left_block.includes(dimension.getBlock(locations[3]).type.id) &&
-            generator.right_block.includes(dimension.getBlock(locations[2]).type.id)
-        ) isCustomGenerator = true;
+            generator.left_block && Array.isArray(generator.left_block) && generator.left_block.length > 0 &&
+            generator.right_block && Array.isArray(generator.right_block) && generator.right_block.length > 0
+        ) {
+            if (
+                generator.left_block.includes(dimension.getBlock(locations[0]).type.id) &&
+                generator.right_block.includes(dimension.getBlock(locations[1]).type.id)
+            ) isCustomGenerator = true;
+            if (
+                generator.left_block.includes(dimension.getBlock(locations[1]).type.id) &&
+                generator.right_block.includes(dimension.getBlock(locations[0]).type.id)
+            ) isCustomGenerator = true;
+            if (
+                generator.left_block.includes(dimension.getBlock(locations[2]).type.id) &&
+                generator.right_block.includes(dimension.getBlock(locations[3]).type.id)
+            ) isCustomGenerator = true;
+            if (
+                generator.left_block.includes(dimension.getBlock(locations[3]).type.id) &&
+                generator.right_block.includes(dimension.getBlock(locations[2]).type.id)
+            ) isCustomGenerator = true;
 
-        if (isCustomGenerator) customGeneratorID = i
+            if (
+                generator.under_block && Array.isArray(generator.under_block) && generator.under_block.length > 0 &&
+                !generator.under_block.includes(dimension.getBlock(locations[5]).type.id)
+            ) isCustomGenerator = false
+
+            if (isCustomGenerator) customGeneratorID = i
+        }
     });
 
     if (
@@ -100,13 +112,8 @@ function Generator(generatorBlock) {
         Lava.includes(dimension.getBlock(locations[2]).type.id)
     ) isBasaltGenerator = true;
 
-    if (
-        dimension.getBlock({
-            x: location.x,
-            y: location.y - 1,
-            z: location.z
-        }).type.id !== "minecraft:soul_soil"
-    ) isBasaltGenerator = false;
+    if (dimension.getBlock(locations[5]).type.id !== "minecraft:soul_soil")
+        isBasaltGenerator = false;
 
     if (!dimension.getBlock(location).isAir) {
         isCobblestoneGenerator = false;
