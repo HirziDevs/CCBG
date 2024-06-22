@@ -32,6 +32,7 @@ function Generator(generatorBlock, gamemode, tool) {
 
     config.customGenerator.forEach((generator, i) => {
         if (
+            customGeneratorID === -1 &&
             generator.left_block && Array.isArray(generator.left_block) && generator.left_block.length > 0 &&
             generator.right_block && Array.isArray(generator.right_block) && generator.right_block.length > 0
         ) {
