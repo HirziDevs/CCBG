@@ -30,6 +30,23 @@ config.explosion = true
 config.piston = true
 
 /*
+Tools
+
+Tools that must be used to break the block to make the generator spawn the blocks
+You can disable it by removing all the items in the array
+
+example code to disable tools: 
+config.tools = []
+*/
+config.tools = [
+	"stone_pickaxe",
+	"iron_pickaxe",
+	"gold_pickaxe",
+	"diamond_pickaxe",
+	"netherite_pickaxe",
+]
+
+/*
 Block Spawn Delay
 
 Specify the amount of time, in seconds, to wait before spawning a block.
@@ -116,6 +133,12 @@ config.customGenerator = [
             { identifier: "lapis_block", chance: 11 },
             { identifier: "diamond_block", chance: 10 },
             { identifier: "emerald_block", chance: 5 }
+		],
+		tools: [
+			"iron_pickaxe",
+			"gold_pickaxe",
+			"diamond_pickaxe",
+			"netherite_pickaxe",
 		]
 	},
 	{
@@ -129,6 +152,12 @@ config.customGenerator = [
             { identifier: "diamond_block", chance: 17.5 },
             { identifier: "emerald_block", chance: 15 },
             { identifier: "netherite_block", chance: 10 }
+		],
+		tools: [
+			"iron_pickaxe",
+			"gold_pickaxe",
+			"diamond_pickaxe",
+			"netherite_pickaxe",
 		]
 	}
 ]

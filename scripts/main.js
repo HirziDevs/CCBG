@@ -11,7 +11,7 @@ You can view all the documentation at https://ccbg.znproject.my.id
 import { system, world } from '@minecraft/server';
 import config from './config';
 
-function Generator(generatorBlock) {
+function Generator(generatorBlock, tool) {
     const { dimension, location } = generatorBlock;
 
     const locations = [
@@ -25,9 +25,9 @@ function Generator(generatorBlock) {
 
     const Water = ["minecraft:flowing_water", "minecraft:water"];
     const Lava = ["minecraft:flowing_lava", "minecraft:lava"];
-    let isCobblestoneGenerator = false;;
-    let isBasaltGenerator = false;;
-    let isCustomGenerator = false;;
+    let isCobblestoneGenerator = false;
+    let isBasaltGenerator = false;
+    let isCustomGenerator = false;
     let customGeneratorID = -1;
 
     config.customGenerator.forEach((generator, i) => {
@@ -55,9 +55,9 @@ function Generator(generatorBlock) {
             if (
                 generator.under_block && Array.isArray(generator.under_block) && generator.under_block.length > 0 &&
                 !generator.under_block.includes(locations[5].type.id)
-            ) isCustomGenerator = false
+            ) isCustomGenerator = false;
 
-            if (isCustomGenerator) customGeneratorID = i
+            if (isCustomGenerator) customGeneratorID = i;
         }
     });
 
@@ -126,6 +126,8 @@ function Generator(generatorBlock) {
         if (isBasaltGenerator && !config.basalt) return;
         if (isCustomGenerator && !config.enableCustomGenerator) return;
 
+        if ((isCobblestoneGenerator || isBasaltGenerator) && tool && config.tools && config.tools.length > 0 && !config.tools.includes(tool)) return;
+
         let blocks;
         if (config.enablePerDimensionGenerator && !isCustomGenerator) {
             switch (dimension.id) {
@@ -144,6 +146,7 @@ function Generator(generatorBlock) {
         } else blocks = config.blocks;
 
         if (isCustomGenerator && customGeneratorID !== -1) blocks = config.customGenerator[customGeneratorID].blocks;
+        if (tool && config.customGenerator[customGeneratorID].tool && config.customGenerator[customGeneratorID].tool.length > 0 && !config.customGenerator[customGeneratorID].tools.includes(tool)) return;
 
         if (blocks.length > 0) {
             let chances = 0;
@@ -161,11 +164,11 @@ function Generator(generatorBlock) {
             system.runTimeout(() => {
                 dimension.runCommand(`setblock ${location.x} ${location.y} ${location.z} ${selectedBlock}`);
             }, config.delay * 20);
-        };
-    };
-};
+        }
+    }
+}
 
-if (config.player || config.player === null || config.player === undefined) world.afterEvents.playerBreakBlock.subscribe(event => Generator(event.block));
+if (config.player || config.player === null || config.player === undefined) world.beforeEvents.playerBreakBlock.subscribe(event => Generator(event.block, event.itemStack.type.id));
 
 if (config.explosion || config.player === null || config.player === undefined) world.afterEvents.blockExplode.subscribe(event => Generator(event.block));
 
@@ -183,5 +186,5 @@ if (config.piston || config.player === null || config.player === undefined) worl
 
     for (const block of locations) {
         if (block.isAir) Generator(block);
-    };
+    }
 });
