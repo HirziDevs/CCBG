@@ -126,14 +126,14 @@ config.customGenerator = [
 		under_block: [],
 		blocks: [
 			{ identifier: "stone", chance: 14 },
-            { identifier: "coal_block", chance: 13 },
-            { identifier: "iron_block", chance: 13 },
-            { identifier: "copper_block", chance: 12 },
-            { identifier: "gold_block", chance: 11 },
-            { identifier: "redstone_block", chance: 11 },
-            { identifier: "lapis_block", chance: 11 },
-            { identifier: "diamond_block", chance: 10 },
-            { identifier: "emerald_block", chance: 5 }
+			{ identifier: "coal_block", chance: 13 },
+			{ identifier: "iron_block", chance: 13 },
+			{ identifier: "copper_block", chance: 12 },
+			{ identifier: "gold_block", chance: 11 },
+			{ identifier: "redstone_block", chance: 11 },
+			{ identifier: "lapis_block", chance: 11 },
+			{ identifier: "diamond_block", chance: 10 },
+			{ identifier: "emerald_block", chance: 5 }
 		],
 		tools: [
 			"minecraft:iron_pickaxe",
@@ -148,11 +148,11 @@ config.customGenerator = [
 		under_block: ["minecraft:netherite_block"],
 		blocks: [
 			{ identifier: "stone", chance: 20 },
-            { identifier: "iron_block", chance: 20 },
-            { identifier: "gold_block", chance: 17.5 },
-            { identifier: "diamond_block", chance: 17.5 },
-            { identifier: "emerald_block", chance: 15 },
-            { identifier: "netherite_block", chance: 10 }
+			{ identifier: "iron_block", chance: 20 },
+			{ identifier: "gold_block", chance: 17.5 },
+			{ identifier: "diamond_block", chance: 17.5 },
+			{ identifier: "emerald_block", chance: 15 },
+			{ identifier: "netherite_block", chance: 10 }
 		],
 		tools: [
 			"minecraft:iron_pickaxe",
