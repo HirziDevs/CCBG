@@ -195,15 +195,17 @@ function Generator(generatorBlock, gamemode, tool) {
 
         if (blocks.length > 0) {
             let blockChances = 0;
-            let selectedBlock = blocks[0].identifier;
+            let selectedBlock = blocks[0].chance;
 
             for (const block of blocks) {
                 blockChances += block.chance;
                 if (Math.random() * 100 < blockChances) {
-                    selectedBlock = block.identifier;
+                    selectedBlock = block.chance;
                     break;
                 }
             }
+
+            selectedBlock = blocks.filter(block => block.chance === selectedBlock)[Math.floor(Math.random() * blocks.filter(block => block.chance === selectedBlock).length)]
 
             config.delay = config.delay < 0 ? 0.1 : config.delay;
             system.runTimeout(() => {
@@ -216,15 +218,18 @@ function Generator(generatorBlock, gamemode, tool) {
                     mobs = config.customGenerator[customGeneratorID].mobs
 
                 let mobChances = 0;
-                let selectedMob = mobs[0].identifier;
+                let selectedMob = mobs[0].chance;
 
                 for (const mob of mobs) {
                     mobChances += mob.chance;
                     if (Math.random() * 100 < mobChances) {
-                        selectedMob = mob.identifier;
+                        selectedMob = mob.chance;
                         break;
                     }
                 }
+
+                selectedMob = mobs.filter(mob => mob.chance === selectedMob)[Math.floor(Math.random() * mobs.filter(mob => mob.chance === selectedMob).length)]
+
                 system.runTimeout(() => {
                     if (selectedMob !== "nothing") dimension.runCommand(`summon ${selectedMob} ${location.x} ${location.y + 1} ${location.z}`);
                 }, config.delay * 20 + 5)
