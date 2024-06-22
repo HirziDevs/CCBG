@@ -163,7 +163,7 @@ function Generator(generatorBlock, tool) {
         if (isBasaltGenerator && !config.basalt) return;
         if (isCustomGenerator && !config.enableCustomGenerator) return;
 
-        if ((isCobblestoneGenerator || isBasaltGenerator) && tool && config.tools && config.tools.length > 0 && !config.tools.includes(tool)) return;
+        if ((isCobblestoneGenerator || isBasaltGenerator) && tool !== "NOTAPLAYER" && config.tools && config.tools.length > 0 && !config.tools.includes(tool)) return;
 
         let blocks;
         if (config.enablePerDimensionGenerator && !isCustomGenerator) {
@@ -183,7 +183,7 @@ function Generator(generatorBlock, tool) {
         } else blocks = config.blocks;
 
         if (isCustomGenerator && customGeneratorID !== -1) blocks = config.customGenerator[customGeneratorID].blocks;
-        if (tool && config.customGenerator[customGeneratorID].tool && config.customGenerator[customGeneratorID].tool.length > 0 && !config.customGenerator[customGeneratorID].tools.includes(tool)) return;
+        if (tool !== "NOTAPLAYER" && config.customGenerator[customGeneratorID].tool && config.customGenerator[customGeneratorID].tool.length > 0 && !config.customGenerator[customGeneratorID].tools.includes(tool)) return;
 
         if (blocks.length > 0) {
             let chances = 0;
@@ -207,7 +207,7 @@ function Generator(generatorBlock, tool) {
 
 if (config.player || config.player === null || config.player === undefined) world.beforeEvents.playerBreakBlock.subscribe(event => Generator(event.block, event.itemStack.type.id));
 
-if (config.explosion || config.player === null || config.player === undefined) world.afterEvents.blockExplode.subscribe(event => Generator(event.block));
+if (config.explosion || config.player === null || config.player === undefined) world.afterEvents.blockExplode.subscribe(event => Generator(event.block, "NOTAPLAYER"));
 
 if (config.piston || config.player === null || config.player === undefined) world.afterEvents.pistonActivate.subscribe(event => {
     const { dimension, location } = event.block;
@@ -222,6 +222,6 @@ if (config.piston || config.player === null || config.player === undefined) worl
     ];
 
     for (const block of locations) {
-        if (block.isAir) Generator(block);
+        if (block.isAir) Generator(block, "NOTAPLAYER");
     }
 });

@@ -39,11 +39,11 @@ example code to disable tools:
 config.tools = []
 */
 config.tools = [
-	"stone_pickaxe",
-	"iron_pickaxe",
-	"gold_pickaxe",
-	"diamond_pickaxe",
-	"netherite_pickaxe",
+	"minecraft:stone_pickaxe",
+	"minecraft:iron_pickaxe",
+	"minecraft:gold_pickaxe",
+	"minecraft:diamond_pickaxe",
+	"minecraft:netherite_pickaxe",
 ]
 
 /*
@@ -136,10 +136,10 @@ config.customGenerator = [
             { identifier: "emerald_block", chance: 5 }
 		],
 		tools: [
-			"iron_pickaxe",
-			"gold_pickaxe",
-			"diamond_pickaxe",
-			"netherite_pickaxe",
+			"minecraft:iron_pickaxe",
+			"minecraft:gold_pickaxe",
+			"minecraft:diamond_pickaxe",
+			"minecraft:netherite_pickaxe",
 		]
 	},
 	{
@@ -155,10 +155,10 @@ config.customGenerator = [
             { identifier: "netherite_block", chance: 10 }
 		],
 		tools: [
-			"iron_pickaxe",
-			"gold_pickaxe",
-			"diamond_pickaxe",
-			"netherite_pickaxe",
+			"minecraft:iron_pickaxe",
+			"minecraft:gold_pickaxe",
+			"minecraft:diamond_pickaxe",
+			"minecraft:netherite_pickaxe",
 		]
 	}
 ]
