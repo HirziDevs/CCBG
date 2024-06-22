@@ -193,6 +193,10 @@ function Generator(generatorBlock, gamemode, tool) {
             !config.customGenerator[customGeneratorID].tools.includes(tool.type.id)
         ) return;
 
+        if (isCustomGenerator && config.customGenerator[customGeneratorID].dimension?.length > 0 &&
+            !config.customGenerator[customGeneratorID].dimension.includes(dimension.id)
+        ) return;
+
         if (blocks.length > 0) {
             let blockChances = 0;
             let selectedBlock = blocks[0].chance;

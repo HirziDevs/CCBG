@@ -136,6 +136,7 @@ config.enableCustomGenerator = false
 
 config.customGenerator = [
 	{
+		dimension: ["minecraft:overworld", "minecraft:nether", "minecraft:the_end"],
 		left_block: ["minecraft:stone"],
 		right_block: ["minecraft:dripstone_block"],
 		under_block: [],
@@ -159,6 +160,7 @@ config.customGenerator = [
 		mobs: []
 	},
 	{
+		dimension: ["minecraft:overworld", "minecraft:nether", "minecraft:the_end"],
 		left_block: ["minecraft:flowing_water", "minecraft:water", "WATERLOGGED"],
 		right_block: ["minecraft:flowing_lava", "minecraft:lava"],
 		under_block: ["minecraft:netherite_block"],
@@ -179,6 +181,7 @@ config.customGenerator = [
 		mobs: []
 	},
 	{
+		dimension: ["minecraft:overworld", "minecraft:nether", "minecraft:the_end"],
 		left_block: ["minecraft:flowing_water", "minecraft:water", "WATERLOGGED"],
 		right_block: ["minecraft:flowing_lava", "minecraft:lava"],
 		under_block: ["minecraft:grass_block"],
