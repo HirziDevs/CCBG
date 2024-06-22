@@ -194,12 +194,12 @@ function Generator(generatorBlock, gamemode, tool) {
         ) return;
 
         if (blocks.length > 0) {
-            let chances = 0;
+            let blockChances = 0;
             let selectedBlock = blocks[0].identifier;
 
             for (const block of blocks) {
-                chances += block.chance;
-                if (Math.random() * 100 < chances) {
+                blockChances += block.chance;
+                if (Math.random() * 100 < blockChances) {
                     selectedBlock = block.identifier;
                     break;
                 }
@@ -209,6 +209,26 @@ function Generator(generatorBlock, gamemode, tool) {
             system.runTimeout(() => {
                 dimension.runCommand(`setblock ${location.x} ${location.y} ${location.z} ${selectedBlock}`);
             }, config.delay * 20);
+
+            if (config.enableSummonMobs) {
+                let mobs = config.mobs
+                if (isCustomGenerator && config.customGenerator[customGeneratorID].mobs?.length > 0)
+                    mobs = config.customGenerator[customGeneratorID].mobs
+
+                let mobChances = 0;
+                let selectedMob = mobs[0].identifier;
+
+                for (const mob of mobs) {
+                    mobChances += mob.chance;
+                    if (Math.random() * 100 < mobChances) {
+                        selectedMob = mob.identifier;
+                        break;
+                    }
+                }
+                system.runTimeout(() => {
+                    if (selectedMob !== "nothing") dimension.runCommand(`summon ${selectedMob} ${location.x} ${location.y + 1} ${location.z}`);
+                }, config.delay * 20 + 5)
+            }
         }
     }
 }

@@ -74,6 +74,21 @@ config.blocks = [
 	{ identifier: "ancient_debris", chance: 1 }
 ]
 
+
+/*
+Summon Mobs
+
+Enable or disable summon mobs when player break block by changing config.enableSummonMobs
+to "true" to enable it or "false" to disable it. without quotation mark
+*/
+config.enableSummonMobs = false
+
+config.mobs = [
+	{ identifier: "nothing", chance: 50 },
+	{ identifier: "minecraft:cow", chance: 30 },
+	{ identifier: "minecraft:sheep", chance: 20 }
+]
+
 /*
 Per Dimension Generator
 
@@ -140,7 +155,8 @@ config.customGenerator = [
 			"minecraft:golden_pickaxe",
 			"minecraft:diamond_pickaxe",
 			"minecraft:netherite_pickaxe",
-		]
+		],
+		mobs: []
 	},
 	{
 		left_block: ["minecraft:flowing_water", "minecraft:water", "WATERLOGGED"],
@@ -159,8 +175,37 @@ config.customGenerator = [
 			"minecraft:golden_pickaxe",
 			"minecraft:diamond_pickaxe",
 			"minecraft:netherite_pickaxe",
+		],
+		mobs: []
+	},
+	{
+		left_block: ["minecraft:flowing_water", "minecraft:water", "WATERLOGGED"],
+		right_block: ["minecraft:flowing_lava", "minecraft:lava"],
+		under_block: ["minecraft:grass_block"],
+		blocks: [
+			{ identifier: "dirt", chance: 20 },
+			{ identifier: "grass_block", chance: 20 },
+			{ identifier: "podzol", chance: 17.5 },
+			{ identifier: "mycelium", chance: 17.5 },
+			{ identifier: "stone", chance: 15 },
+			{ identifier: "deepslate", chance: 10 }
+		],
+		tools: [
+			"minecraft:wooden_pickaxe",
+			"minecraft:stone_pickaxe",
+			"minecraft:iron_pickaxe",
+			"minecraft:golden_pickaxe",
+			"minecraft:diamond_pickaxe",
+			"minecraft:netherite_pickaxe",
+		],
+		mobs: [
+			{ identifier: "nothing", chance: 50 },
+			{ identifier: "minecraft:cow", chance: 20 },
+			{ identifier: "minecraft:sheep", chance: 15 },
+			{ identifier: "minecraft:pig", chance: 10 },
+			{ identifier: "minecraft:chicken", chance: 5 }
 		]
-	}
+	},
 ]
 
 export default config;
