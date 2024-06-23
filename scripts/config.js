@@ -6,7 +6,8 @@
   \/_____/   \/_____/   \/_____/   \/_____/ 
 										    
 A Custom Cobblestone and Basalt Generator By @HirziDevs
-You can view all the documentation at https://ccbg.znproject.my.id
+Documentation : https://ccbg.znproject.my.id
+Discord		  : https://discord.znproject.my.id
 */
 const config = {};
 
