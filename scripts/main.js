@@ -11,7 +11,7 @@ You can view all the documentation at https://ccbg.znproject.my.id
 import { system, world } from '@minecraft/server';
 import config from './config';
 
-function Generator(generatorBlock, gamemode, tool) {
+function Generator(generatorBlock, player, tool) {
     const { dimension, location } = generatorBlock;
 
     const locations = [
@@ -165,7 +165,7 @@ function Generator(generatorBlock, gamemode, tool) {
         if (!isCobblestoneGenerator && !isBasaltGenerator && isCustomGenerator && !config.enableCustomGenerator) return;
 
         if (
-            (isCobblestoneGenerator || isBasaltGenerator) && gamemode === "survival" && tool &&
+            (isCobblestoneGenerator || isBasaltGenerator) && player && player.getGameMode() === "survival" && tool &&
             config.tools?.length > 0 && !config.tools.includes(tool.type.id)
         ) return;
 
@@ -188,7 +188,7 @@ function Generator(generatorBlock, gamemode, tool) {
 
         if (isCustomGenerator && customGeneratorID !== -1) blocks = config.customGenerator[customGeneratorID].blocks;
         if (
-            isCustomGenerator && customGeneratorID !== -1 && gamemode === "survival" && tool &&
+            isCustomGenerator && customGeneratorID !== -1 && player && player.getGameMode() === "survival" && tool &&
             config.customGenerator[customGeneratorID]?.tools?.length > 0 &&
             !config.customGenerator[customGeneratorID].tools.includes(tool.type.id)
         ) return;
@@ -212,7 +212,24 @@ function Generator(generatorBlock, gamemode, tool) {
             selectedBlock = blocks.filter(block => block.chance === selectedBlock)[Math.floor(Math.random() * blocks.filter(block => block.chance === selectedBlock).length)].identifier
 
             config.delay = config.delay < 0 ? 0.1 : config.delay;
+            let itemLocation = location.y
+
+            if (locations[5].isAir) itemLocation = location.y - 1
+            if (locations[4].isAir) itemLocation = location.y + 1
+            // if(locations[5].type.id === "minecraft:hopper") itemLocation = location.y - 0.25
+
             system.runTimeout(() => {
+                if (config.teleportItemAndXP) {
+                    if (
+                        player && player.getGameMode() === "survival" &&
+                        locations[5].type.id !== "minecraft:hopper" &&
+                        dimension.getEntities({ location: location, maxDistance: 3, type: "minecraft:hopper_minecart" }).length === 0
+                    ) dimension.runCommand(`execute positioned ${location.x} ${itemLocation} ${location.z} run tp @e[r=2,type=minecraft:item] ~~~`)
+
+                    if (player && player.getGameMode() === "survival") dimension.runCommand(`execute positioned ${location.x} ${itemLocation} ${location.z} run tp @e[r=2,type=minecraft:xp_orb] ${player.location.x} ${player.location.y} ${player.location.z}`)
+                }
+
+                if (config.enableParticle && config.particle) dimension.runCommand(`particle ${config.particle} ${location.x} ${location.y + 1.5} ${location.z}`);
                 dimension.runCommand(`setblock ${location.x} ${location.y} ${location.z} ${selectedBlock}`);
             }, config.delay * 20);
 
@@ -242,11 +259,11 @@ function Generator(generatorBlock, gamemode, tool) {
     }
 }
 
-if (config.player || config.player === null || config.player === undefined) world.afterEvents.playerBreakBlock.subscribe(event => Generator(event.block, event.player.getGameMode(), event.itemStackAfterBreak));
+if (config.player || config.player === null || config.player === undefined) world.afterEvents.playerBreakBlock.subscribe(event => Generator(event.block, event.player, event.itemStackAfterBreak));
 
-if (config.explosion || config.player === null || config.player === undefined) world.afterEvents.blockExplode.subscribe(event => Generator(event.block));
+if (config.explosion || config.explosion === null || config.explosion === undefined) world.afterEvents.blockExplode.subscribe(event => Generator(event.block));
 
-if (config.piston || config.player === null || config.player === undefined) world.afterEvents.pistonActivate.subscribe(event => {
+if (config.piston || config.piston === null || config.piston === undefined) world.afterEvents.pistonActivate.subscribe(event => {
     const { dimension, location } = event.block;
 
     const locations = [

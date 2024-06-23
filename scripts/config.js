@@ -33,7 +33,7 @@ config.piston = true
 Tools
 
 Tools that must be used to break the block in order to make the generator spawn 
-the blocks can be disabled by removing all the items in the array.
+the tools can be disabled by removing all the items in the array.
 
 Example code to disable tools:
 config.tools = []
@@ -53,6 +53,29 @@ Specify the amount of time, in seconds, to wait before spawning a block.
 You can set it to values such as 1 or 0.1, etc. if you put negative number it will be set to 0.1
 */
 config.delay = 0.5
+
+/*
+Teleport Item and XP
+
+Teleport item and XP to upper or bellow block if there is nothing at above or below
+INFO: if there is a hopper or minecart hopper, the item will not be teleported becouse there is a bug that
+	  can crash or force close your minecraft
+
+Enable or disable teleport item and XP by changing config.teleportItemAndXP
+to "true" to enable it or "false" to disable it. without quotation mark
+*/
+config.teleportItemAndXP = false
+
+/*
+Particle
+
+Show particle when the block is destroyed
+
+Enable or disable particle by changing config.enableParticle
+to "true" to enable it or "false" to disable it. without quotation mark
+*/
+config.enableParticle = false
+config.particle = "minecraft:villager_happy"
 
 /*
 Block Identifier & Chances
