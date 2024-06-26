@@ -229,7 +229,7 @@ function Generator(generatorType, generatorBlock, player, tool) {
 
         if (blocks.length > 0) {
             let blockChances = 0;
-            let totalBlockChances = mobs.reduce((total, block) => total + block.chance, 0);
+            let totalBlockChances = blocks.reduce((total, block) => total + block.chance, 0);
             let selectedBlock = blocks[0].chance;
 
             for (const block of blocks) {
