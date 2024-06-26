@@ -26,6 +26,8 @@ custom.generators = [
         under_block: [],
         tags: [],
         players: [],
+        particle: false,
+        sound: false,
         events: {
             player: true,
             explosion: true,
@@ -49,6 +51,8 @@ custom.generators = [
         under_block: [],
         tags: [],
         players: [],
+        particle: false,
+        sound: false,
         events: {
             player: true,
             explosion: true,
@@ -80,6 +84,8 @@ custom.generators = [
         under_block: ["minecraft:netherite_block"],
         tags: ["donator"],
         players: [],
+        particle: "minecraft:endrod",
+        sound: "random.levelup",
         events: {
             player: true,
             explosion: true,
@@ -108,6 +114,8 @@ custom.generators = [
         under_block: ["minecraft:grass_block"],
         tags: [],
         players: [],
+        particle: false,
+        sound: false,
         events: {
             player: true,
             explosion: true,

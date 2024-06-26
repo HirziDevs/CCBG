@@ -79,6 +79,18 @@ config.enableParticle = false
 config.particle = "minecraft:villager_happy"
 
 /*
+Sound
+
+Play sound when the block is destroyed
+
+Enable or disable sound by changing config.enableSound
+to "true" to enable it or "false" to disable it. without quotation mark
+*/
+config.enableSound = false
+config.sound = "random.orb"
+config.noPermissionSound = "random.break"
+
+/*
 Required Tags
 
 Specify the tags that player must have to use the generator
