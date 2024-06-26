@@ -14,6 +14,7 @@ import config from './config';
 import customGenerator from './custom-generator';
 
 function Generator(generatorType, generatorBlock, player, tool) {
+    if(generatorType === 0 && player.hasTag("disableGenerator")) return
     const { dimension, location } = generatorBlock;
 
     const locations = [
