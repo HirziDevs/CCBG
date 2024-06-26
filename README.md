@@ -33,6 +33,8 @@ CCBG are using Beta APIs to make the generator working, please enable it to make
     - [Block Spawn Delay](https://ccbg.znproject.my.id/configuration/block-spawn-delay) 
     - [Teleport Items and XP](https://ccbg.znproject.my.id/configuration/teleport-items-and-xp) 
     - [Particles](https://ccbg.znproject.my.id/configuration/particles) 
+    - [Sounds](https://ccbg.znproject.my.id/configuration/sounds) 
+    - [Players and Tags](https://ccbg.znproject.my.id/configuration/players-and-tags) 
     - [Generator Blocks and Chances](https://ccbg.znproject.my.id/configuration/generator-blocks-and-chances) 
     - [Summon Mobs](https://ccbg.znproject.my.id/configuration/summon-mobs) 
     - [Per Dimension Generator](https://ccbg.znproject.my.id/configuration/per-dimension-generator) 

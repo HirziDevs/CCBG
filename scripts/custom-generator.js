@@ -9,8 +9,6 @@ A Custom Cobblestone and Basalt Generator By @HirziDevs
 Documentation : https://ccbg.znproject.my.id
 Discord		  : https://discord.znproject.my.id
 
-
-
 Custom Generator Configuration
 
 Enable or disable Custom Generator by changing custom.enable
