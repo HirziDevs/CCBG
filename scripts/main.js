@@ -11,8 +11,9 @@ Discord		  : https://discord.znproject.my.id
 */
 import { system, world } from '@minecraft/server';
 import config from './config';
+import customGenerator from './custom-generator';
 
-function Generator(generatorBlock, player, tool) {
+function Generator(generatorType, generatorBlock, player, tool) {
     const { dimension, location } = generatorBlock;
 
     const locations = [
@@ -31,9 +32,9 @@ function Generator(generatorBlock, player, tool) {
     let isCustomGenerator = false;
     let customGeneratorID = -1;
 
-    config.customGenerator.forEach((generator, i) => {
+    customGenerator.generators.forEach((generator, i) => {
         if (
-            customGeneratorID === -1 &&
+            customGeneratorID < 0 &&
             generator.left_block && Array.isArray(generator.left_block) && generator.left_block.length > 0 &&
             generator.right_block && Array.isArray(generator.right_block) && generator.right_block.length > 0
         ) {
@@ -163,12 +164,7 @@ function Generator(generatorBlock, player, tool) {
     if (isCobblestoneGenerator || isBasaltGenerator || isCustomGenerator) {
         if (isCobblestoneGenerator && !config.cobblestone) return;
         if (isBasaltGenerator && !config.basalt) return;
-        if (!isCobblestoneGenerator && !isBasaltGenerator && isCustomGenerator && !config.enableCustomGenerator) return;
-
-        if (
-            (isCobblestoneGenerator || isBasaltGenerator) && player && player.getGameMode() === "survival" && tool &&
-            config.tools?.length > 0 && !config.tools.includes(tool.type.id)
-        ) return;
+        if (!isCobblestoneGenerator && !isBasaltGenerator && isCustomGenerator && !customGenerator.enable) return;
 
         let blocks;
         if (config.enablePerDimensionGenerator && !isCustomGenerator) {
@@ -187,16 +183,42 @@ function Generator(generatorBlock, player, tool) {
             }
         } else blocks = config.blocks;
 
-        if (isCustomGenerator && customGeneratorID !== -1) blocks = config.customGenerator[customGeneratorID].blocks;
-        if (
-            isCustomGenerator && customGeneratorID !== -1 && player && player.getGameMode() === "survival" && tool &&
-            config.customGenerator[customGeneratorID]?.tools?.length > 0 &&
-            !config.customGenerator[customGeneratorID].tools.includes(tool.type.id)
-        ) return;
+        let tags = config.tags
+        if (isCustomGenerator) {
+            blocks = customGenerator.generators[customGeneratorID].blocks;
 
-        if (isCustomGenerator && config.customGenerator[customGeneratorID].dimension?.length > 0 &&
-            !config.customGenerator[customGeneratorID].dimension.includes(dimension.id)
-        ) return;
+            if (customGenerator.generators[customGeneratorID].tags)
+                tags = customGenerator.generators[customGeneratorID].tags
+
+            if (customGenerator.generators[customGeneratorID].events)
+                switch (generatorType) {
+                    case 0:
+                        if (!customGenerator.generators[customGeneratorID].events.player) return;
+                        break
+                    case 1:
+                        if (!customGenerator.generators[customGeneratorID].events.explosion) return;
+                        break
+                    case 2:
+                        if (!customGenerator.generators[customGeneratorID].events.piston) return;
+                        break
+                }
+
+            if (generatorType === 0 && player.getGameMode() === "survival" && tool &&
+                customGenerator.generators[customGeneratorID]?.tools?.length > 0 &&
+                !customGenerator.generators[customGeneratorID].tools.includes(tool.type.id)
+            ) return;
+
+            if (customGenerator.generators[customGeneratorID].dimension?.length > 0 &&
+                !customGenerator.generators[customGeneratorID].dimension.includes(dimension.id)
+            ) return;
+        }
+
+        if (generatorType === 0 && tags.length > 0) {
+            let hasTag = false
+            for (let i = 0; i < tags.length; i++) if (player.hasTag(tags[i])) hasTag = true;
+
+            if (!hasTag) return;
+        }
 
         if (blocks.length > 0) {
             let blockChances = 0;
@@ -236,8 +258,8 @@ function Generator(generatorBlock, player, tool) {
 
             if (config.enableSummonMobs) {
                 let mobs = config.mobs
-                if (isCustomGenerator && config.customGenerator[customGeneratorID].mobs?.length > 0)
-                    mobs = config.customGenerator[customGeneratorID].mobs
+                if (isCustomGenerator && customGenerator.generators[customGeneratorID].mobs?.length > 0)
+                    mobs = customGenerator.generators[customGeneratorID].mobs
 
                 let mobChances = 0;
                 let selectedMob = mobs[0].chance;
@@ -260,9 +282,9 @@ function Generator(generatorBlock, player, tool) {
     }
 }
 
-if (config.player || config.player === null || config.player === undefined) world.afterEvents.playerBreakBlock.subscribe(event => Generator(event.block, event.player, event.itemStackAfterBreak));
+if (config.player || config.player === null || config.player === undefined) world.afterEvents.playerBreakBlock.subscribe(event => Generator(0, event.block, event.player, event.itemStackAfterBreak));
 
-if (config.explosion || config.explosion === null || config.explosion === undefined) world.afterEvents.blockExplode.subscribe(event => Generator(event.block));
+if (config.explosion || config.explosion === null || config.explosion === undefined) world.afterEvents.blockExplode.subscribe(event => Generator(1, event.block));
 
 if (config.piston || config.piston === null || config.piston === undefined) world.afterEvents.pistonActivate.subscribe(event => {
     const { dimension, location } = event.block;
@@ -276,5 +298,5 @@ if (config.piston || config.piston === null || config.piston === undefined) worl
         dimension.getBlock({ x: location.x, y: location.y - 1, z: location.z })
     ];
 
-    for (const block of locations) if (block.isAir) Generator(block);
+    for (const block of locations) if (block.isAir) Generator(2, block);
 });

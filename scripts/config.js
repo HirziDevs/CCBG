@@ -79,6 +79,13 @@ config.enableParticle = false
 config.particle = "minecraft:villager_happy"
 
 /*
+Required Tags
+
+Specify the tags that player must have to use the generator
+*/
+config.tags = []
+
+/*
 Block Identifier & Chances
 
 The total chances should be 100
@@ -152,87 +159,8 @@ config.the_end = [
 /*
 Custom Generator
 
-Enable or disable  Custom Generator by changing config.enableCustomGenerator 
-to "true" to enable it or to "false" to disable it. without quotation mark
-add "WATERLOGGED" to left/right/under blocks to support waterlogged blocks
+Custom Generator are moved to custom-generator.js
 */
-config.enableCustomGenerator = false
 
-config.customGenerator = [
-	{
-		dimension: ["minecraft:overworld", "minecraft:nether", "minecraft:the_end"],
-		left_block: ["minecraft:stone"],
-		right_block: ["minecraft:dripstone_block"],
-		under_block: [],
-		blocks: [
-			{ identifier: "stone", chance: 14 },
-			{ identifier: "coal_block", chance: 13 },
-			{ identifier: "iron_block", chance: 13 },
-			{ identifier: "copper_block", chance: 12 },
-			{ identifier: "gold_block", chance: 11 },
-			{ identifier: "redstone_block", chance: 11 },
-			{ identifier: "lapis_block", chance: 11 },
-			{ identifier: "diamond_block", chance: 10 },
-			{ identifier: "emerald_block", chance: 5 }
-		],
-		tools: [
-			"minecraft:iron_pickaxe",
-			"minecraft:golden_pickaxe",
-			"minecraft:diamond_pickaxe",
-			"minecraft:netherite_pickaxe",
-		],
-		mobs: []
-	},
-	{
-		dimension: ["minecraft:overworld", "minecraft:nether", "minecraft:the_end"],
-		left_block: ["minecraft:flowing_water", "minecraft:water", "WATERLOGGED"],
-		right_block: ["minecraft:flowing_lava", "minecraft:lava"],
-		under_block: ["minecraft:netherite_block"],
-		blocks: [
-			{ identifier: "stone", chance: 20 },
-			{ identifier: "iron_block", chance: 20 },
-			{ identifier: "gold_block", chance: 17.5 },
-			{ identifier: "diamond_block", chance: 17.5 },
-			{ identifier: "emerald_block", chance: 15 },
-			{ identifier: "netherite_block", chance: 10 }
-		],
-		tools: [
-			"minecraft:iron_pickaxe",
-			"minecraft:golden_pickaxe",
-			"minecraft:diamond_pickaxe",
-			"minecraft:netherite_pickaxe",
-		],
-		mobs: []
-	},
-	{
-		dimension: ["minecraft:overworld", "minecraft:nether", "minecraft:the_end"],
-		left_block: ["minecraft:flowing_water", "minecraft:water", "WATERLOGGED"],
-		right_block: ["minecraft:flowing_lava", "minecraft:lava"],
-		under_block: ["minecraft:grass_block"],
-		blocks: [
-			{ identifier: "dirt", chance: 20 },
-			{ identifier: "grass_block", chance: 20 },
-			{ identifier: "podzol", chance: 17.5 },
-			{ identifier: "mycelium", chance: 17.5 },
-			{ identifier: "stone", chance: 15 },
-			{ identifier: "deepslate", chance: 10 }
-		],
-		tools: [
-			"minecraft:wooden_pickaxe",
-			"minecraft:stone_pickaxe",
-			"minecraft:iron_pickaxe",
-			"minecraft:golden_pickaxe",
-			"minecraft:diamond_pickaxe",
-			"minecraft:netherite_pickaxe",
-		],
-		mobs: [
-			{ identifier: "nothing", chance: 50 },
-			{ identifier: "minecraft:cow", chance: 20 },
-			{ identifier: "minecraft:sheep", chance: 15 },
-			{ identifier: "minecraft:pig", chance: 10 },
-			{ identifier: "minecraft:chicken", chance: 5 }
-		]
-	},
-]
 
 export default config;
