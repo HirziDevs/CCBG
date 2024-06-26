@@ -184,11 +184,15 @@ function Generator(generatorType, generatorBlock, player, tool) {
         } else blocks = config.blocks;
 
         let tags = config.tags
+        let players = config.players
         if (isCustomGenerator) {
             blocks = customGenerator.generators[customGeneratorID].blocks;
 
             if (customGenerator.generators[customGeneratorID].tags)
                 tags = customGenerator.generators[customGeneratorID].tags
+
+            if (customGenerator.generators[customGeneratorID].players)
+                tags = customGenerator.generators[customGeneratorID].players
 
             if (customGenerator.generators[customGeneratorID].events)
                 switch (generatorType) {
@@ -213,11 +217,14 @@ function Generator(generatorType, generatorBlock, player, tool) {
             ) return;
         }
 
-        if (generatorType === 0 && tags.length > 0) {
-            let hasTag = false
-            for (let i = 0; i < tags.length; i++) if (player.hasTag(tags[i])) hasTag = true;
+        if (generatorType === 0) {
+            if (tags.length > 0) {
+                let hasTag = false
+                for (let i = 0; i < tags.length; i++) if (player.hasTag(tags[i])) hasTag = true;
 
-            if (!hasTag) return;
+                if (!hasTag) return;
+            }
+            if (players.length > 0 && !players.includes(player.name)) return
         }
 
         if (blocks.length > 0) {

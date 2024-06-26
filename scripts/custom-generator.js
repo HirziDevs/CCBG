@@ -25,6 +25,7 @@ custom.generators = [
         right_block: [],
         under_block: [],
         tags: [],
+        players: [],
         events: {
             player: true,
             explosion: true,
@@ -47,6 +48,7 @@ custom.generators = [
         right_block: ["minecraft:dripstone_block"],
         under_block: [],
         tags: [],
+        players: [],
         events: {
             player: true,
             explosion: true,
@@ -77,6 +79,7 @@ custom.generators = [
         right_block: ["minecraft:flowing_lava", "minecraft:lava"],
         under_block: ["minecraft:netherite_block"],
         tags: ["donator"],
+        players: [],
         events: {
             player: true,
             explosion: true,
@@ -104,6 +107,7 @@ custom.generators = [
         right_block: ["minecraft:flowing_lava", "minecraft:lava"],
         under_block: ["minecraft:grass_block"],
         tags: [],
+        players: [],
         events: {
             player: true,
             explosion: true,

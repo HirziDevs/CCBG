@@ -82,8 +82,21 @@ config.particle = "minecraft:villager_happy"
 Required Tags
 
 Specify the tags that player must have to use the generator
+
+Example:
+config.tags = ["operator","donator"]
 */
 config.tags = []
+
+/*
+Players
+
+Specify the players that can use the generator
+
+Example:
+config.players = ["HirziGamingYT", "player2"]
+*/
+config.players = []
 
 /*
 Block Identifier & Chances
