@@ -93,12 +93,12 @@ custom.generators = [
         ],
         mobs: [],
         blocks: [
-            { identifier: "stone", chance: 20 },
-            { identifier: "iron_block", chance: 20 },
-            { identifier: "gold_block", chance: 17.5 },
-            { identifier: "diamond_block", chance: 17.5 },
-            { identifier: "emerald_block", chance: 15 },
-            { identifier: "netherite_block", chance: 10 }
+			{ identifier: "stone", chance: 30 },
+			{ identifier: "iron_block", chance: 22.5 },
+			{ identifier: "gold_block", chance: 15 },
+			{ identifier: "diamond_block", chance: 12.5 },
+			{ identifier: "emerald_block", chance: 12.5 },
+			{ identifier: "netherite_block", chance: 7.5 }
         ]
     },
     {
