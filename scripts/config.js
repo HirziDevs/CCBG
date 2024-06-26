@@ -88,7 +88,6 @@ config.tags = []
 /*
 Block Identifier & Chances
 
-The total chances should be 100
 If the block you entered does not appear, maybe you have entered an invalid block or there is a typo
 you can check the block identifier by using the command "/setblock" in game
 */
@@ -104,7 +103,6 @@ config.blocks = [
 	{ identifier: "emerald_ore", chance: 4 },
 	{ identifier: "ancient_debris", chance: 1 }
 ]
-
 
 /*
 Summon Mobs
@@ -161,6 +159,5 @@ Custom Generator
 
 Custom Generator are moved to custom-generator.js
 */
-
 
 export default config;

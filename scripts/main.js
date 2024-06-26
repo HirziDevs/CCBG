@@ -222,11 +222,12 @@ function Generator(generatorType, generatorBlock, player, tool) {
 
         if (blocks.length > 0) {
             let blockChances = 0;
+            let totalBlockChances = mobs.reduce((total, block) => total + block.chance, 0);
             let selectedBlock = blocks[0].chance;
 
             for (const block of blocks) {
                 blockChances += block.chance;
-                if (Math.random() * 100 < blockChances) {
+                if (Math.random() * totalBlockChances < blockChances) {
                     selectedBlock = block.chance;
                     break;
                 }
@@ -263,11 +264,12 @@ function Generator(generatorType, generatorBlock, player, tool) {
 
                 if (mobs.length > 0) {
                     let mobChances = 0;
+                    let totalMobChances = mobs.reduce((total, mob) => total + mob.chance, 0);
                     let selectedMob = mobs[0].chance;
 
                     for (const mob of mobs) {
                         mobChances += mob.chance;
-                        if (Math.random() * 100 < mobChances) {
+                        if (Math.random() * totalMobChances < mobChances) {
                             selectedMob = mob.chance;
                             break;
                         }
