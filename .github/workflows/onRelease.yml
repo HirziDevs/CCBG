@@ -26,11 +26,13 @@ jobs:
     - name: Create ZIP file (excluding node_modules)
       run: zip -r CCBG_${{ github.event.release.tag_name }}.zip . -x "node_modules/*" ".git/*"
 
-    - name: Create .mcaddon file (excluding specific files)
-      run: zip -r CCBG_${{ github.event.release.tag_name }}.mcaddon . -x "node_modules/*" ".git/*" "tsconfig.json" "README.md" "package.json" "package-lock.json" "LICENSE" ".gitignore"
+    - name: Create MC Pack file (excluding specific files)
+      run: zip -r mc_pack.zip . -x "node_modules/*" ".git/*" "tsconfig.json" "README.md" "package.json" "package-lock.json" "LICENSE" ".gitignore"
 
-    - name: Create .mcpack file (excluding specific files)
-      run: zip -r CCBG_${{ github.event.release.tag_name }}.mcpack . -x "node_modules/*" ".git/*" "tsconfig.json" "README.md" "package.json" "package-lock.json" "LICENSE" ".gitignore"
+    - name: Package to .mcaddon and .mcpack from MC Pack File
+      run: |
+        cp mc_pack.zip CCBG_${{ github.event.release.tag_name }}.mcaddon
+        cp mc_pack.zip CCBG_${{ github.event.release.tag_name }}.mcpack
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
