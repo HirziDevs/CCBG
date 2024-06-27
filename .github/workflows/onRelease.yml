@@ -24,7 +24,7 @@ jobs:
       run: npm run build
 
     - name: Create ZIP file
-      run: zip -r CCBG_${{ github.event.release.tag_name }}.zip ./build
+      run: zip -r CCBG_${{ github.event.release.tag_name }}.zip .
 
     - name: Package to .mcaddon and .mcpack
       run: |
