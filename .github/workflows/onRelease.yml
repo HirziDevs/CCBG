@@ -24,13 +24,13 @@ jobs:
       run: npm run build
 
     - name: Create ZIP file (excluding node_modules)
-      run: zip -r CCBG_${{ github.event.release.tag_name }}.zip . -x "node_modules/*"
+      run: zip -r CCBG_${{ github.event.release.tag_name }}.zip . -x "node_modules/*" ".git/*"
 
     - name: Create .mcaddon file (excluding specific files)
-      run: zip -r CCBG_${{ github.event.release.tag_name }}.mcaddon . -x "node_modules/*" "tsconfig.json" "README.md" "package.json" "package-lock.json" "LICENSE" ".gitignore"
+      run: zip -r CCBG_${{ github.event.release.tag_name }}.mcaddon . -x "node_modules/*" ".git/*" "tsconfig.json" "README.md" "package.json" "package-lock.json" "LICENSE" ".gitignore"
 
     - name: Create .mcpack file (excluding specific files)
-      run: zip -r CCBG_${{ github.event.release.tag_name }}.mcpack . -x "node_modules/*" "tsconfig.json" "README.md" "package.json" "package-lock.json" "LICENSE" ".gitignore"
+      run: zip -r CCBG_${{ github.event.release.tag_name }}.mcpack . -x "node_modules/*" ".git/*" "tsconfig.json" "README.md" "package.json" "package-lock.json" "LICENSE" ".gitignore"
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
