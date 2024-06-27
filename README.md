@@ -53,6 +53,9 @@ CCBG are using Beta APIs to make the generator working, please enable it to make
 
 - Sometimes Custom Generator is not working on vanilla server
 
+## Known Issues
+- Sometimes Custom Generator is not working on vanilla server
+
 ## Need Help?
 
 - [Create Github Issue](https://github.com/HirziDevs/CCBG/issues/new)
