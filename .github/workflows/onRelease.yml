@@ -48,4 +48,4 @@ jobs:
           CCBG_${{ github.event.release.tag_name }}.mcaddon
           CCBG_${{ github.event.release.tag_name }}.mcpack
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
