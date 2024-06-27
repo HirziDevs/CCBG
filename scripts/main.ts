@@ -196,13 +196,7 @@ function Generator(
   if (isCobblestoneGenerator || isBasaltGenerator || isCustomGenerator) {
     if (isCobblestoneGenerator && !config.cobblestone) return;
     if (isBasaltGenerator && !config.basalt) return;
-    if (
-      !isCobblestoneGenerator &&
-      !isBasaltGenerator &&
-      isCustomGenerator &&
-      !customGenerator.enable
-    )
-      return;
+    if (isCustomGenerator && !customGenerator.enable) return;
 
     let blocks;
     if (config.enablePerDimensionGenerator && !isCustomGenerator) {
