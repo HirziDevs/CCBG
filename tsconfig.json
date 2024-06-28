@@ -4,6 +4,6 @@
     "module": "ESNext", // Use ES Modules
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "outDir": "scripts/dist"
+    "outDir": "scripts"
   }
 }
