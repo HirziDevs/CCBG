@@ -9,46 +9,46 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run build script
-      run: npm run build
+      - name: Run build script
+        run: npm run build
 
-    - name: Create ZIP file (excluding node_modules)
-      run: zip -r CCBG_${{ github.event.release.tag_name }}.zip . -x "node_modules/*" ".git/*"
+      - name: Create ZIP file (excluding node_modules)
+        run: zip -r CCBG_${{ github.event.release.tag_name }}.zip . -x "node_modules/*" ".git/*"
 
-    - name: Create MC Pack file (excluding specific files)
-      run: zip -r mc_pack.zip . -x "node_modules/*" ".git/*" "tsconfig.json" "README.md" "package.json" "package-lock.json" "LICENSE" ".gitignore"
+      - name: Create MC Pack file (excluding specific files)
+        run: zip -r mc_pack.zip . -x "node_modules/*" ".git/*" "src/*" "tsconfig.json" "README.md" "package.json" "package-lock.json" "LICENSE" ".gitignore"
 
-    - name: Package to .mcaddon and .mcpack from MC Pack File
-      run: |
-        cp mc_pack.zip CCBG_${{ github.event.release.tag_name }}.mcaddon
-        cp mc_pack.zip CCBG_${{ github.event.release.tag_name }}.mcpack
+      - name: Package to .mcaddon and .mcpack from MC Pack File
+        run: |
+          cp mc_pack.zip CCBG_${{ github.event.release.tag_name }}.mcaddon
+          cp mc_pack.zip CCBG_${{ github.event.release.tag_name }}.mcpack
 
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: CCBG_${{ github.event.release.tag_name }}
-        path: |
-          CCBG_${{ github.event.release.tag_name }}.zip
-          CCBG_${{ github.event.release.tag_name }}.mcaddon
-          CCBG_${{ github.event.release.tag_name }}.mcpack
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: CCBG_${{ github.event.release.tag_name }}
+          path: |
+            CCBG_${{ github.event.release.tag_name }}.zip
+            CCBG_${{ github.event.release.tag_name }}.mcaddon
+            CCBG_${{ github.event.release.tag_name }}.mcpack
 
-    - name: Create release assets
-      uses: softprops/action-gh-release@v1
-      with:
-        files: |
-          CCBG_${{ github.event.release.tag_name }}.zip
-          CCBG_${{ github.event.release.tag_name }}.mcaddon
-          CCBG_${{ github.event.release.tag_name }}.mcpack
-      env:
-        GITHUB_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
+      - name: Create release assets
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            CCBG_${{ github.event.release.tag_name }}.zip
+            CCBG_${{ github.event.release.tag_name }}.mcaddon
+            CCBG_${{ github.event.release.tag_name }}.mcpack
+        env:
+          GITHUB_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
