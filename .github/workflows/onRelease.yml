@@ -17,22 +17,30 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run build script
-        run: npm run build
-
-      - name: Create ZIP file (excluding node_modules)
-        run: zip -r CCBG_${{ github.event.release.tag_name }}.zip . -x "node_modules/*" ".git/*"
-
-      - name: Create MC Pack file (excluding specific files)
-        run: zip -r mc_pack.zip . -x "node_modules/*" ".git/*" "src/*" "tsconfig.json" "README.md" "package.json" "package-lock.json" "LICENSE" ".gitignore"
-
-      - name: Package to .mcaddon and .mcpack from MC Pack File
+      - name: Install dependencies and run build script
         run: |
+          echo "👨‍💻 Installing NPM Packages"
+          npm install
+
+          echo "👨‍💻 Building the Code"
+          npm run build
+
+          echo "✨ Done!"
+
+      - name: Create ZIP and MC Pack files
+        run: |
+          echo "📚 Creating ZIP file (excluding node_modules)"
+          zip -r CCBG_${{ github.event.release.tag_name }}.zip . -x "node_modules/*" ".git/*"
+
+          echo "📚 Creating MC Pack file (excluding specific files)"
+          zip -r mc_pack.zip . -x "node_modules/*" ".git/*" "src/*" "tsconfig.json" "README.md" "package.json" "package-lock.json" "LICENSE" ".gitignore"
+
+          echo "📚 Packaging to .mcaddon and .mcpack from MC Pack File"
           cp mc_pack.zip CCBG_${{ github.event.release.tag_name }}.mcaddon
           cp mc_pack.zip CCBG_${{ github.event.release.tag_name }}.mcpack
+
+          echo "✨ Done!"
+
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
