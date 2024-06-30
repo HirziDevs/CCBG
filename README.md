@@ -1,9 +1,10 @@
 # Custom Cobblestone and Basalt Generator
+
 <img alt="CCBG Banner" src="https://media.forgecdn.net/attachments/description/1035052/description_9cff90c6-0aef-4601-9a35-b5cb57bb15b8.png" width="555"/>
 
 Customize your cobblestone and basalt generator with this addon! You can make your cobblestone and basalt generator spawn any block you want. By default, it spawns all Minecraft ores, including ancient debris, making it perfect for SkyBlock and other minigames that utilize cobblestone and basalt generators.
 
-Why choose this addon? Because _it does not add additional blocks or entities that need to be crafted first and also doesn't use command blocks to create a custom generator! This addon also does not use player.json, so it will work with other addons!_ You just need to **make a cobblestone and basalt generator as usual**, and it will work straight away! 
+Why choose this addon? Because _it does not add additional blocks or entities that need to be crafted first and also doesn't use command blocks to create a custom generator! This addon also does not use player.json, so it will work with other addons!_ You just need to **make a cobblestone and basalt generator as usual**, and it will work straight away!
 
 ## Preview
 
@@ -18,38 +19,45 @@ Check this video (click the image):
 </a>
 
 ## Enabling Beta APIs Experiment
+
 CCBG are using Beta APIs to make the generator working, please enable it to make this addons works
 
 [Enabling Beta APIs](https://ccbg.znproject.my.id/installations/enabling-beta-apis)
 
 ## Documentation
-- [CCBG](https://ccbg.znproject.my.id) 
+
+- [CCBG](https://ccbg.znproject.my.id)
 - Installations
-    - [Enabling Beta APIs](https://ccbg.znproject.my.id/installations/enabling-beta-apis) 
-    - [Configuration File](https://ccbg.znproject.my.id/installations/configuration-file) 
-    - [Installing the pack](https://ccbg.znproject.my.id/installations/installing-the-pack) 
+  - [Enabling Beta APIs](https://ccbg.znproject.my.id/installations/enabling-beta-apis)
+  - [Configuration File](https://ccbg.znproject.my.id/installations/configuration-file)
+  - [Installing the pack](https://ccbg.znproject.my.id/installations/installing-the-pack)
 - Configuration
-    - [Generator](https://ccbg.znproject.my.id/configuration/generator) 
-    - [Generator Event](https://ccbg.znproject.my.id/configuration/generator-event) 
-    - [Tools](https://ccbg.znproject.my.id/configuration/tools) 
-    - [Block Spawn Delay](https://ccbg.znproject.my.id/configuration/block-spawn-delay) 
-    - [Teleport Items and XP](https://ccbg.znproject.my.id/configuration/teleport-items-and-xp) 
-    - [Particles](https://ccbg.znproject.my.id/configuration/particles) 
-    - [Sounds](https://ccbg.znproject.my.id/configuration/sounds) 
-    - [Players and Tags](https://ccbg.znproject.my.id/configuration/players-and-tags) 
-    - [Generator Blocks and Chances](https://ccbg.znproject.my.id/configuration/generator-blocks-and-chances) 
-    - [Summon Mobs](https://ccbg.znproject.my.id/configuration/summon-mobs) 
-    - [Per Dimension Generator](https://ccbg.znproject.my.id/configuration/per-dimension-generator) 
-    - [Custom Generator](https://ccbg.znproject.my.id/configuration/custom-generator) 
+  - [Generator](https://ccbg.znproject.my.id/configuration/generator)
+  - [Generator Event](https://ccbg.znproject.my.id/configuration/generator-event)
+  - [Tools](https://ccbg.znproject.my.id/configuration/tools)
+  - [Block Spawn Delay](https://ccbg.znproject.my.id/configuration/block-spawn-delay)
+  - [Teleport Items and XP](https://ccbg.znproject.my.id/configuration/teleport-items-and-xp)
+  - [Particles](https://ccbg.znproject.my.id/configuration/particles)
+  - [Sounds](https://ccbg.znproject.my.id/configuration/sounds)
+  - [Players and Tags](https://ccbg.znproject.my.id/configuration/players-and-tags)
+  - [Generator Blocks and Chances](https://ccbg.znproject.my.id/configuration/generator-blocks-and-chances)
+  - [Summon Mobs](https://ccbg.znproject.my.id/configuration/summon-mobs)
+  - [Per Dimension Generator](https://ccbg.znproject.my.id/configuration/per-dimension-generator)
+  - [Custom Generator](https://ccbg.znproject.my.id/configuration/custom-generator)
 - Additional Information
-    - [Adding Blocks from Addons](https://ccbg.znproject.my.id/additional-information/adding-blocks-from-addons) 
-    - [Adding Tools from Addons](https://ccbg.znproject.my.id/additional-information/adding-tools-from-addons) 
-    - [Adding Mobs from Addons](https://ccbg.znproject.my.id/additional-information/adding-mobs-from-addons) 
+  - [Adding Blocks from Addons](https://ccbg.znproject.my.id/additional-information/adding-blocks-from-addons)
+  - [Adding Tools from Addons](https://ccbg.znproject.my.id/additional-information/adding-tools-from-addons)
+  - [Adding Mobs from Addons](https://ccbg.znproject.my.id/additional-information/adding-mobs-from-addons)
+
+## Known Issues
+
+- Sometimes Custom Generator is not working on vanilla server
 
 ## Known Issues
 - Sometimes Custom Generator is not working on vanilla server
 
 ## Need Help?
+
 - [Create Github Issue](https://github.com/HirziDevs/CCBG/issues/new)
 - [Join ZN Project Discord](https://discord.znproject.my.id)
 
