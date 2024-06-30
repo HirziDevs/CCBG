@@ -195,9 +195,12 @@ function Generator(
 
   if (isCobblestoneGenerator || isBasaltGenerator || isCustomGenerator) {
     let generator = false
+    
     if (isCustomGenerator && customGenerator.enable) generator = true
-    if (!generator && isCobblestoneGenerator && !config.cobblestone) return;
-    if (!generator && isBasaltGenerator && !config.basalt) return;
+    if (!generator && isCobblestoneGenerator && config.cobblestone) generator = true
+    if (!generator && isBasaltGenerator && config.basalt) generator = true
+
+    if(!generator) return;
 
     let blocks = []
     if (isCobblestoneGenerator) blocks = config.cobblestoneGeneratorblocks
