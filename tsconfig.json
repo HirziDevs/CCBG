@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2023",
-    "module": "ESNext", // Use ES Modules
+    "module": "ESNext",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "outDir": "scripts"
