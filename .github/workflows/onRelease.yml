@@ -35,7 +35,7 @@ jobs:
       - name: Create MC Pack file
         run: |
           echo "📚 Creating MC Pack file (excluding specific files and other ZIP files)"
-          zip -r mc_pack.zip . -x "node_modules/*" ".git/*" "src/*" ".github/" "tsconfig.json" "README.md" "package.json" "package-lock.json" "LICENSE" ".gitignore" "*.zip"
+          zip -r mc_pack.zip . -x "node_modules/*" ".git/*" "src/*" ".github/*" "tsconfig.json" "README.md" "package.json" "package-lock.json" "LICENSE" ".gitignore" "*.zip"
 
           echo "📚 Packaging to .mcpack from MC Pack File"
           cp mc_pack.zip CCBG_${{ github.event.release.tag_name }}.mcpack
