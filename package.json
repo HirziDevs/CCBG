@@ -1,24 +1,32 @@
 {
-  "name": "ccbg",
-  "version": "1.2.4",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "cleanWin": "del /s /q dist",
-    "clean": "rm -rf dist",
-    "build": "tsc --build",
-    "watch": "tsx --watch"
-  },
-  "type": "module",
-  "keywords": [],
-  "author": "HirziDevs",
-  "license": "MIT",
-  "dependencies": {
-    "@minecraft/server": "^1.12.0-beta.1.21.1-stable"
-  },
-  "devDependencies": {
-    "ts-node": "^10.9.2",
-    "tsx": "^4.15.7",
-    "typescript": "^5.5.2"
-  }
+	"name": "ccbg",
+	"version": "1.2.4",
+	"description": "Customize your cobblestone and basalt generator with this addon! You can make your cobblestone and basalt generator spawn any block you want. By default, it spawns all Minecraft ores, including ancient debris, making it perfect for SkyBlock and other minigames that utilize cobblestone and basalt generators.",
+	"main": "main.js",
+	"scripts": {
+		"cleanWin": "del /s /q scripts",
+		"clean": "rm -rf scripts",
+		"build": "tsc --build",
+		"watch": "tsx --watch"
+	},
+	"type": "module",
+	"keywords": [
+		"minecraft-bedrock-edition",
+		"minecraft-bedrock",
+		"minecraft-bedrock-addon",
+		"cobblestone-generator",
+		"minecraft-bedrock-server",
+		"ore-generators",
+		"basalt-generator"
+	],
+	"author": "HirziDevs",
+	"license": "MIT",
+	"dependencies": {
+		"@minecraft/server": "^1.12.0-beta.1.21.1-stable"
+	},
+	"devDependencies": {
+		"ts-node": "^10.9.2",
+		"tsx": "^4.15.7",
+		"typescript": "^5.5.2"
+	}
 }
