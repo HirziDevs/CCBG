@@ -4,10 +4,10 @@
 \ \ \____  \ \ \____  \ \  __<   \ \ \__ \  
  \ \_____\  \ \_____\  \ \_____\  \ \_____\ 
   \/_____/   \/_____/   \/_____/   \/_____/ 
-										    
+                        
 A Custom Cobblestone and Basalt Generator By @HirziDevs
 Documentation : https://ccbg.znproject.my.id
-Discord		  : https://discord.znproject.my.id
+Discord		    : https://discord.znproject.my.id
 */
 
 const config = {
@@ -63,7 +63,7 @@ const config = {
    * Teleport item and XP to upper or bellow block if there is nothing at above or below
    * INFO: if there is a hopper or minecart hopper, the item will not be teleported becouse there is a bug that
    *	  can crash or force close your minecraft
-   * Enable or disable teleport item and XP by changing config.teleportItemAndXP
+   * Enable or disable teleport item and XP by changing "teleportItemAndXP"
    * to "true" to enable it or "false" to disable it. without quotation mark
    */
   teleportItemAndXP: false,
@@ -73,7 +73,7 @@ const config = {
    *
    * @description
    * Show particle when the block is destroyed
-   * Enable or disable particle by changing config.enableParticle
+   * Enable or disable particle by changing "enableParticle"
    * to "true" to enable it or "false" to disable it. without quotation mark
    */
   enableParticle: false,
@@ -84,7 +84,7 @@ const config = {
    *
    * @description
    * Play sound when the block is destroyed
-   * Enable or disable sound by changing config.enableSound
+   * Enable or disable sound by changing "enableSound"
    * to "true" to enable it or "false" to disable it. without quotation mark
    */
   enableSound: false,
@@ -108,13 +108,13 @@ const config = {
   players: [],
 
   /**
-   * @title Block Identifier & Chances
+   * @title Block Identifier & Chances for Cobblestone Generator
    *
    * @description
    * If the block you entered does not appear, maybe you have entered an invalid block or there is a typo
    * you can check the block identifier by using the command "/setblock" in game
    */
-  blocks: [
+  cobblestoneGeneratorblocks: [
     { identifier: "cobblestone", chance: 14 },
     { identifier: "coal_ore", chance: 13 },
     { identifier: "iron_ore", chance: 13 },
@@ -128,10 +128,24 @@ const config = {
   ],
 
   /**
+   * @title Block Identifier & Chances for Basalt Generator
+   *
+   * @description
+   * If the block you entered does not appear, maybe you have entered an invalid block or there is a typo
+   * you can check the block identifier by using the command "/setblock" in game
+   */
+  basaltGeneratorblocks: [
+    { identifier: "basalt", chance: 40 },
+    { identifier: "quartz_ore", chance: 30 },
+    { identifier: "nether_gold_ore", chance: 20 },
+    { identifier: "ancient_debris", chance: 10 },
+  ],
+
+  /**
    * @title Summon Mobs
    *
    * @description
-   * Enable or disable summon mobs when player break block by changing config.enableSummonMobs
+   * Enable or disable summon mobs when player break block by changing "enableSummonMobs"
    * to "true" to enable it or "false" to disable it. without quotation mark
    */
   enableSummonMobs: false,
@@ -146,7 +160,7 @@ const config = {
    * @title Per Dimension Generator
    *
    * @description
-   * Enable or disable Per Dimension Generator by changing config.enablePerDimensionGenerator
+   * Enable or disable Per Dimension Generator by changing "enablePerDimensionGenerator"
    * to "true" to enable it or to "false" to disable it. without quotation mark
    */
   enablePerDimensionGenerator: false,

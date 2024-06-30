@@ -7,18 +7,18 @@
                                                 
 A Custom Cobblestone and Basalt Generator By @HirziDevs
 Documentation : https://ccbg.znproject.my.id
-Discord		  : https://discord.znproject.my.id
+Discord		    : https://discord.znproject.my.id
 */
-import { system, world } from "@minecraft/server";
-import type { Block } from "@minecraft/server";
+import { system, world, MinecraftDimensionTypes } from "@minecraft/server";
+import type { Block, Player, ItemStack } from "@minecraft/server";
 import config from "./config";
 import customGenerator from "./custom-generator";
 
 function Generator(
   generatorType: number,
   generatorBlock: Block,
-  player?: any,
-  tool?: any
+  player?: Player,
+  tool?: ItemStack
 ) {
   if (generatorType === 0 && player.hasTag("disableGenerator")) return;
   const { dimension, location } = generatorBlock;
@@ -194,26 +194,28 @@ function Generator(
   }
 
   if (isCobblestoneGenerator || isBasaltGenerator || isCustomGenerator) {
-    if (isCobblestoneGenerator && !config.cobblestone) return;
-    if (isBasaltGenerator && !config.basalt) return;
-    if (isCustomGenerator && !customGenerator.enable) return;
+    let generator = false
+    if (isCustomGenerator && customGenerator.enable) generator = true
+    if (!generator && isCobblestoneGenerator && !config.cobblestone) return;
+    if (!generator && isBasaltGenerator && !config.basalt) return;
 
-    let blocks;
+    let blocks = []
+    if (isCobblestoneGenerator) blocks = config.cobblestoneGeneratorblocks
+    else if (isBasaltGenerator) blocks = config.basaltGeneratorblocks
+
     if (config.enablePerDimensionGenerator && !isCustomGenerator) {
       switch (dimension.id) {
-        case "minecraft:overworld":
+        case MinecraftDimensionTypes.overworld:
           blocks = config.overworld;
           break;
-        case "minecraft:nether":
+        case MinecraftDimensionTypes.nether:
           blocks = config.nether;
           break;
-        case "minecraft:the_end":
+        case MinecraftDimensionTypes.theEnd:
           blocks = config.the_end;
           break;
-        default:
-          blocks = config.blocks;
       }
-    } else blocks = config.blocks;
+    }
 
     let tags: string[] = config.tags;
     let players: string[] = config.players;
@@ -309,10 +311,7 @@ function Generator(
       }
 
       selectedBlock = blocks.filter((block) => block.chance === selectedBlock)[
-        Math.floor(
-          Math.random() *
-            blocks.filter((block) => block.chance === selectedBlock).length
-        )
+        Math.floor(Math.random() * blocks.filter((block) => block.chance === selectedBlock).length)
       ].identifier;
 
       config.delay = config.delay < 0 ? 0.1 : config.delay;
@@ -346,9 +345,7 @@ function Generator(
 
         if (enableParticle && particle)
           dimension.runCommand(
-            `particle ${particle} ${location.x} ${location.y + 1.5} ${
-              location.z
-            }`
+            `particle ${particle} ${location.x} ${location.y + 1.5} ${location.z}`
           );
         if (enableSound && sound)
           dimension.runCommand(
@@ -369,10 +366,7 @@ function Generator(
 
         if (mobs.length > 0) {
           let mobChances = 0;
-          let totalMobChances = mobs.reduce(
-            (total, mob) => total + mob.chance,
-            0
-          );
+          let totalMobChances = mobs.reduce((total, mob) => total + mob.chance, 0);
           let selectedMob: string | number = mobs[0].chance;
 
           for (const mob of mobs) {
@@ -384,18 +378,13 @@ function Generator(
           }
 
           selectedMob = mobs.filter((mob) => mob.chance === selectedMob)[
-            Math.floor(
-              Math.random() *
-                mobs.filter((mob) => mob.chance === selectedMob).length
-            )
+            Math.floor(Math.random() * mobs.filter((mob) => mob.chance === selectedMob).length)
           ].identifier;
 
           system.runTimeout(() => {
             if (selectedMob !== "nothing")
               dimension.runCommand(
-                `summon ${selectedMob} ${location.x} ${location.y + 1} ${
-                  location.z
-                }`
+                `summon ${selectedMob} ${location.x} ${location.y + 1} ${location.z}`
               );
           }, config.delay * 20 + 5);
         }
