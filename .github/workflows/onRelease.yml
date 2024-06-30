@@ -27,20 +27,30 @@ jobs:
 
           echo "✨ Done!"
 
-      - name: Create ZIP and MC Pack files
+      - name: Create ZIP file
         run: |
           echo "📚 Creating ZIP file (excluding node_modules)"
           zip -r CCBG_${{ github.event.release.tag_name }}.zip . -x "node_modules/*" ".git/*"
 
+      - name: Create MC Pack file
+        run: |
           echo "📚 Creating MC Pack file (excluding specific files)"
           zip -r mc_pack.zip . -x "node_modules/*" ".git/*" "src/*" "tsconfig.json" "README.md" "package.json" "package-lock.json" "LICENSE" ".gitignore"
 
-          echo "📚 Packaging to .mcaddon and .mcpack from MC Pack File"
-          cp mc_pack.zip CCBG_${{ github.event.release.tag_name }}.mcaddon
+          echo "📚 Packaging to .mcpack from MC Pack File"
           cp mc_pack.zip CCBG_${{ github.event.release.tag_name }}.mcpack
 
-          echo "✨ Done!"
+      - name: Create MC Addon file
+        run: |
+          echo "📚 Creating directory structure for .mcaddon"
+          mkdir -p CCBG
+          unzip mc_pack.zip -d CCBG
+          zip -r CCBG_${{ github.event.release.tag_name }}.mcaddon CCBG
 
+          echo "📚 Cleaning up"
+          rm -rf CCBG
+
+          echo "✨ Done!"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
@@ -59,4 +69,4 @@ jobs:
             CCBG_${{ github.event.release.tag_name }}.mcaddon
             CCBG_${{ github.event.release.tag_name }}.mcpack
         env:
-          GITHUB_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
