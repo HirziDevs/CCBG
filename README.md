@@ -26,7 +26,7 @@ CCBG are using Beta APIs to make the generator working, please enable it to make
 
 ## Documentation
 
-- [CCBG](https://ccbg.znproject.my.id)
+- [Main Page](https://ccbg.znproject.my.id)
 - Installations
   - [Enabling Beta APIs](https://ccbg.znproject.my.id/installations/enabling-beta-apis)
   - [Configuration File](https://ccbg.znproject.my.id/installations/configuration-file)
@@ -48,13 +48,6 @@ CCBG are using Beta APIs to make the generator working, please enable it to make
   - [Adding Blocks from Addons](https://ccbg.znproject.my.id/additional-information/adding-blocks-from-addons)
   - [Adding Tools from Addons](https://ccbg.znproject.my.id/additional-information/adding-tools-from-addons)
   - [Adding Mobs from Addons](https://ccbg.znproject.my.id/additional-information/adding-mobs-from-addons)
-
-## Known Issues
-
-- Sometimes Custom Generator is not working on vanilla server
-
-## Known Issues
-- Sometimes Custom Generator is not working on vanilla server
 
 ## Need Help?
 
