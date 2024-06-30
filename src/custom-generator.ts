@@ -7,13 +7,9 @@
                                                 
 A Custom Cobblestone and Basalt Generator By @HirziDevs
 Documentation : https://ccbg.znproject.my.id
-Discord		  : https://discord.znproject.my.id
+Discord		    : https://discord.znproject.my.id
 
 Custom Generator Configuration
-
-Enable or disable Custom Generator by changing custom.enable
-to "true" to enable it or to "false" to disable it. without quotation mark
-add "WATERLOGGED" to left/right/under blocks to support waterlogged blocks
 
 Template:
 custom.generators = [
@@ -38,7 +34,22 @@ custom.generators = [
 ]
 */
 const custom = {
+  /**
+  * @title Enable or Disable Custom Generator
+  *
+  * @description
+  * Enable or disable Custom Generator by changing "enable"
+  * to "true" to enable it or to "false" to disable it. without quotation mark
+  * add "WATERLOGGED" to left/right/under blocks to support waterlogged blocks
+  */
   enable: false,
+
+  /**
+  * @title Custom Generator Configurations
+  *
+  * @description
+  * You can add Custom Generator here
+  */
   generators: [
     {
       dimension: [
