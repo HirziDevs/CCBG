@@ -32,6 +32,8 @@ jobs:
           echo "📚 Creating ZIP file (excluding node_modules and other ZIP files)"
           zip -r CCBG_${{ github.event.release.tag_name }}.zip . -x "node_modules/*" ".git/*" "*.zip"
 
+          echo "✨ Done!"
+
       - name: Create MC Pack file
         run: |
           echo "📚 Creating MC Pack file (excluding specific files and other ZIP files)"
@@ -39,6 +41,29 @@ jobs:
 
           echo "📚 Packaging to .mcpack from MC Pack File"
           cp mc_pack.zip CCBG_${{ github.event.release.tag_name }}.mcpack
+
+          echo "✨ Done!"
+
+      - name: Create Minecraft Preview Pack file
+        run: |
+          echo "📚 Creating directory structure for Minecraft Preview Pack"
+          mkdir CCBG_PREVIEW
+          rsync -av --exclude='node_modules' --exclude='.git' --exclude='CCBG_PREVIEW' --exclude='*.zip' --exclude='.github' --exclude='src' --exclude='tsconfig.json' --exclude='README.md' --exclude='package.json' --exclude='package-lock.json' --exclude='LICENSE' --exclude='.gitignore' ./ CCBG_PREVIEW/
+          node .github/workflow-script/updatePreviewManifest.js
+
+          echo "📚 Creating MC Pack file for Preview"
+          cd CCBG_PREVIEW
+          zip -r ../mc_pack_preview.zip . -x "node_modules/*" ".git/*" "*.zip" "*.mcpack"
+          cd ..
+          cp mc_pack_preview.zip CCBG_${{ github.event.release.tag_name }}_Minecraft_PREVIEW.mcpack
+
+          echo "📚 Creating ZIP file for Minecraft Preview"
+          zip -r CCBG_${{ github.event.release.tag_name }}_Minecraft_PREVIEW.zip CCBG_PREVIEW -x "node_modules/*" ".git/*" "*.zip" "*.mcpack"
+
+          echo "📚 Cleaning up"
+          rm -rf CCBG_PREVIEW
+
+          echo "✨ Done!"
 
       - name: Create MC Addon file
         run: |
@@ -60,6 +85,8 @@ jobs:
             CCBG_${{ github.event.release.tag_name }}.zip
             CCBG_${{ github.event.release.tag_name }}.mcaddon
             CCBG_${{ github.event.release.tag_name }}.mcpack
+            CCBG_${{ github.event.release.tag_name }}_Minecraft_PREVIEW.mcpack
+            CCBG_${{ github.event.release.tag_name }}_Minecraft_PREVIEW.zip
 
       - name: Create release assets
         uses: softprops/action-gh-release@v1
@@ -68,5 +95,7 @@ jobs:
             CCBG_${{ github.event.release.tag_name }}.zip
             CCBG_${{ github.event.release.tag_name }}.mcaddon
             CCBG_${{ github.event.release.tag_name }}.mcpack
+            CCBG_${{ github.event.release.tag_name }}_Minecraft_PREVIEW.mcpack
+            CCBG_${{ github.event.release.tag_name }}_Minecraft_PREVIEW.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
