@@ -346,8 +346,12 @@ function Generator(
             );
         }
 
-        if (enableParticle && particle)
+        if (enableParticle && particle) {
           dimension.spawnParticle(particle.toLowerCase(), { x: location.x, y: location.y + 1.5, z: location.z });
+          dimension.spawnParticle(particle.toLowerCase(), { x: location.x + 1, y: location.y + 1.5, z: location.z });
+          dimension.spawnParticle(particle.toLowerCase(), { x: location.x + 1, y: location.y + 1.5, z: location.z + 1 });
+          dimension.spawnParticle(particle.toLowerCase(), { x: location.x, y: location.y + 1.5, z: location.z + 1 });
+        }
         if (enableSound && sound)
           dimension.playSound(sound.toLowerCase(), location)
         dimension.runCommand(
