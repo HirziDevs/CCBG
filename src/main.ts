@@ -20,7 +20,7 @@ function Generator(
   player?: Player,
   tool?: ItemStack
 ) {
-  if (generatorType === 0 && player.hasTag("disableGenerator")) return;
+  if (generatorType === 0 && config.disableGeneratorTag && player.hasTag(config.disableGeneratorTag)) return;
   const { dimension, location } = generatorBlock;
 
   const locations = [

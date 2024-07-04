@@ -22,6 +22,14 @@ const config = {
   basalt: true,
 
   /**
+   * @title Disable Generator Tag
+   *
+   * @description
+   * If player have this tag, the generator will not be generated for that player
+   */
+  disableGeneratorTag: "disableGenerator",
+
+  /**
    * @title Generator Event
    *
    * @description
