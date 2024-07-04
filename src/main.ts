@@ -222,8 +222,8 @@ function Generator(
 
     let tags: string[] = config.tags;
     let players: string[] = config.players;
-    let particle: string | boolean = config.particle;
-    let sound: string | boolean = config.sound;
+    let particle: any = config.particle;
+    let sound: any = config.sound;
     let enableParticle = config.enableParticle;
     let enableSound = config.enableSound;
     if (isCustomGenerator) {
@@ -315,7 +315,7 @@ function Generator(
 
       selectedBlock = blocks.filter((block) => block.chance === selectedBlock)[
         Math.floor(Math.random() * blocks.filter((block) => block.chance === selectedBlock).length)
-      ].identifier;
+      ].identifier.toLowerCase();
 
       config.delay = config.delay < 0 ? 0.1 : config.delay;
       let itemLocation = location.y;
@@ -378,7 +378,7 @@ function Generator(
 
           selectedMob = mobs.filter((mob) => mob.chance === selectedMob)[
             Math.floor(Math.random() * mobs.filter((mob) => mob.chance === selectedMob).length)
-          ].identifier;
+          ].identifier.toLowerCase();
 
           system.runTimeout(() => {
             if (selectedMob !== "nothing")
