@@ -18,6 +18,7 @@ custom.generators = [
     left_block: [],
     right_block: [],
     under_block: [],
+    commands: [],
     tags: [],
     players: [],
     particle: false,
@@ -60,6 +61,7 @@ const custom = {
       left_block: ["minecraft:stone"],
       right_block: ["minecraft:dripstone_block"],
       under_block: [],
+      commands: [],
       tags: [],
       players: [],
       particle: false,
@@ -97,6 +99,7 @@ const custom = {
       left_block: ["minecraft:flowing_water", "minecraft:water", "WATERLOGGED"],
       right_block: ["minecraft:flowing_lava", "minecraft:lava"],
       under_block: ["minecraft:netherite_block"],
+      commands: [],
       tags: ["donator"],
       players: [],
       particle: "minecraft:endrod",
@@ -131,6 +134,9 @@ const custom = {
       left_block: ["minecraft:flowing_water", "minecraft:water", "WATERLOGGED"],
       right_block: ["minecraft:flowing_lava", "minecraft:lava"],
       under_block: ["minecraft:grass_block"],
+      commands: [
+        { block: "minecraft:netherite_block", command: `tellraw @a {"rawtext":[{"text":"((PLAYER)) just found a netherite block in custom generator!"}]}` }
+      ],
       tags: [],
       players: [],
       particle: false,

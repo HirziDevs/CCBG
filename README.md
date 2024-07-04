@@ -43,6 +43,7 @@ CCBG are using Beta APIs to make the generator working, please enable it to make
   - [Players and Tags](https://ccbg.znproject.my.id/configuration/players-and-tags)
   - [Generator Blocks and Chances](https://ccbg.znproject.my.id/configuration/generator-blocks-and-chances)
   - [Summon Mobs](https://ccbg.znproject.my.id/configuration/summon-mobs)
+  - [Run Commands](https://ccbg.znproject.my.id/configuration/commands)
   - [Per Dimension Generator](https://ccbg.znproject.my.id/configuration/per-dimension-generator)
   - [Custom Generator](https://ccbg.znproject.my.id/configuration/custom-generator)
 - Additional Information

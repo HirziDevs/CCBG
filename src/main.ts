@@ -18,7 +18,8 @@ function Generator(
   generatorType: number,
   generatorBlock: Block,
   player?: Player,
-  tool?: ItemStack
+  tool?: ItemStack,
+  previousBlock?: string
 ) {
   if (generatorType === 0 && config.disableGeneratorTag && player.hasTag(config.disableGeneratorTag)) return;
   const { dimension, location } = generatorBlock;
@@ -224,8 +225,10 @@ function Generator(
     let players: string[] = config.players;
     let particle: any = config.particle;
     let sound: any = config.sound;
+    let commands: any = config.commands;
     let enableParticle = config.enableParticle;
     let enableSound = config.enableSound;
+    let enableCommands = config.enableCommands;
     if (isCustomGenerator && customGenerator.enable) {
       blocks = customGenerator.generators[customGeneratorID].blocks;
 
@@ -234,6 +237,11 @@ function Generator(
 
       if (customGenerator.generators[customGeneratorID].players)
         players = customGenerator.generators[customGeneratorID].players;
+
+      if (customGenerator.generators[customGeneratorID].commands) {
+        enableCommands = true;
+        commands = customGenerator.generators[customGeneratorID].commands;
+      }
 
       if (customGenerator.generators[customGeneratorID].particle) {
         enableParticle = true;
@@ -346,6 +354,12 @@ function Generator(
             );
         }
 
+        if (enableCommands && commands) {
+          for (const command of commands) {
+            if (previousBlock && command.block === previousBlock) dimension.runCommand(command.command.replaceAll("((PLAYER))", player.name));
+            else if (command.block === "*") dimension.runCommand(command.command);
+          }
+        }
         if (enableParticle && particle) {
           dimension.spawnParticle(particle.toLowerCase(), { x: location.x, y: location.y + 1.5, z: location.z });
           dimension.spawnParticle(particle.toLowerCase(), { x: location.x + 1, y: location.y + 1.5, z: location.z });
@@ -397,9 +411,13 @@ function Generator(
 }
 
 if (config.player !== false)
-  world.afterEvents.playerBreakBlock.subscribe((event) =>
-    Generator(0, event.block, event.player, event.itemStackAfterBreak)
-  );
+  world.beforeEvents.playerBreakBlock.subscribe((event) => {
+    const previousBlock = `${event.block.type.id}`;
+
+    system.runTimeout(() =>
+      Generator(0, event.block, event.player, event.itemStack, previousBlock),
+      1)
+  });
 
 if (config.explosion !== false)
   world.afterEvents.blockExplode.subscribe((event) =>

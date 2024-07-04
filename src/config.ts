@@ -165,6 +165,25 @@ const config = {
   ],
 
   /**
+   * @title Commands
+   *
+   * @description
+   * Enable or disable commands by changing "enableCommands"
+   * to "true" to enable it or "false" to disable it. without quotation mark
+   * You can use ((PLAYER)) placeholder to use player name in the command!
+   * You can use * to run commands on any block in the generator!
+   * INFO: 
+   *  SPECIFIC BLOCK COMMAND ONLY WORKS IF PLAYER DESTROY THE BLOCK! 
+   *  SO YOU CANNOT USE ((PLAYER)) IF THE BLOCK IS NOT DESTROYED BY PLAYER
+   */
+  enableCommands: false,
+
+  commands: [
+    { block: "*", command: `tellraw @a {"rawtext":[{"text":"Hey! someone is using custom generator!"}]}` },
+    { block: "minecraft:ancient_debris", command: `tellraw @a {"rawtext":[{"text":"((PLAYER)) just found an ancient debris in custom generator!"}]}` }
+  ],
+
+  /**
    * @title Per Dimension Generator
    *
    * @description
