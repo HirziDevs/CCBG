@@ -347,9 +347,7 @@ function Generator(
         }
 
         if (enableParticle && particle)
-          dimension.runCommand(
-            `particle ${particle} ${location.x} ${location.y + 1.5} ${location.z}`
-          );
+          dimension.spawnParticle(particle.toLowerCase(), { x: location.x, y: location.y + 1.5, z: location.z });
         if (enableSound && sound)
           dimension.playSound(sound.toLowerCase(), location)
         dimension.runCommand(
