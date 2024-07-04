@@ -33,6 +33,7 @@ CCBG are using Beta APIs to make the generator working, please enable it to make
   - [Installing the pack](https://ccbg.znproject.my.id/installations/installing-the-pack)
 - Configuration
   - [Generator](https://ccbg.znproject.my.id/configuration/generator)
+  - [Disable Generator Tag](https://ccbg.znproject.my.id/configuration/disable-generator-tag)
   - [Generator Event](https://ccbg.znproject.my.id/configuration/generator-event)
   - [Tools](https://ccbg.znproject.my.id/configuration/tools)
   - [Block Spawn Delay](https://ccbg.znproject.my.id/configuration/block-spawn-delay)
