@@ -37,7 +37,7 @@ jobs:
       - name: Create MC Pack file
         run: |
           echo "📚 Creating MC Pack file (excluding specific files and other ZIP files)"
-          zip -r mc_pack.zip . -x "node_modules/*" ".git/*" "src/*" ".github/*" "tsconfig.json" "README.md" "package.json" "package-lock.json" "LICENSE" ".gitignore" "*.zip"
+          zip -r mc_pack.zip . -x "node_modules/*" ".git/*" "src/*" ".github/*" "tsconfig.json" "README.md" "package.json" "package-lock.json" ".gitignore" "*.zip"
 
           echo "📚 Packaging to .mcpack from MC Pack File"
           cp mc_pack.zip CCBG_${{ github.event.release.tag_name }}.mcpack
@@ -48,7 +48,7 @@ jobs:
         run: |
           echo "📚 Creating directory structure for Minecraft Preview Pack"
           mkdir CCBG_PREVIEW
-          rsync -av --exclude='node_modules' --exclude='.git' --exclude='CCBG_PREVIEW' --exclude='*.zip' --exclude='.github' --exclude='src' --exclude='tsconfig.json' --exclude='README.md' --exclude='package.json' --exclude='package-lock.json' --exclude='LICENSE' --exclude='.gitignore' ./ CCBG_PREVIEW/
+          rsync -av --exclude='node_modules' --exclude='.git' --exclude='CCBG_PREVIEW' --exclude='*.zip' --exclude='.github' --exclude='src' --exclude='tsconfig.json' --exclude='README.md' --exclude='package.json' --exclude='package-lock.json' --exclude='.gitignore' ./ CCBG_PREVIEW/
           node .github/workflow-script/updatePreviewManifest.js
 
           echo "📚 Creating MC Pack file for Preview"
