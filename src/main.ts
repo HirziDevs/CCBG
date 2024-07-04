@@ -288,11 +288,11 @@ function Generator(
           if (player.hasTag(tags[i])) hasTag = true;
 
         if (!hasTag && enableSound && config.noPermissionSound)
-          player.runCommand(`playsound ${config.noPermissionSound}`);
+          player.playSound(config.noPermissionSound)
         if (!hasTag) return;
       }
       if (players.length > 0 && !players.includes(player.name)) {
-        player.runCommand(`playsound ${config.noPermissionSound}`);
+        player.playSound(config.noPermissionSound)
         return;
       }
     }
@@ -351,9 +351,7 @@ function Generator(
             `particle ${particle} ${location.x} ${location.y + 1.5} ${location.z}`
           );
         if (enableSound && sound)
-          dimension.runCommand(
-            `playsound ${sound} @a ${location.x} ${location.y} ${location.z}`
-          );
+          dimension.playSound(sound.toLowerCase(), location)
         dimension.runCommand(
           `setblock ${location.x} ${location.y} ${location.z} ${selectedBlock}`
         );
