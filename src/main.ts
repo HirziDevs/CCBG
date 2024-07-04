@@ -356,8 +356,8 @@ function Generator(
 
         if (enableCommands && commands) {
           for (const command of commands) {
-            if (previousBlock && command.block === previousBlock) dimension.runCommand(command.command.replaceAll("((PLAYER))", player.name));
-            else if (command.block === "*") dimension.runCommand(command.command);
+            if (previousBlock && (command.block === previousBlock || command.block === "*")) dimension.runCommand(command.command.replaceAll("((PLAYER))", player.name));
+            else if (command.block === "*" && !previousBlock) dimension.runCommand(command.command);
           }
         }
         if (enableParticle && particle) {
