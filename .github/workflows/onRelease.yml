@@ -30,7 +30,7 @@ jobs:
       - name: Create ZIP file
         run: |
           echo "📚 Creating ZIP file (excluding node_modules and other ZIP files)"
-          zip -r CCBG_${{ github.event.release.tag_name }}.zip . -x "node_modules/*" ".git/*" "*.zip"
+          zip -r CCBG_${{ github.event.release.tag_name }}.zip . -x "node_modules/*" ".git/*" "src/*" ".github/*" "tsconfig.json" "README.md" "package.json" "package-lock.json" ".gitignore" "*.zip"
 
           echo "✨ Done!"
 
