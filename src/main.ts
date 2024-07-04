@@ -226,7 +226,7 @@ function Generator(
     let sound: any = config.sound;
     let enableParticle = config.enableParticle;
     let enableSound = config.enableSound;
-    if (isCustomGenerator) {
+    if (isCustomGenerator && customGenerator.enable) {
       blocks = customGenerator.generators[customGeneratorID].blocks;
 
       if (customGenerator.generators[customGeneratorID].tags)
