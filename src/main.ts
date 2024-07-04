@@ -195,12 +195,12 @@ function Generator(
 
   if (isCobblestoneGenerator || isBasaltGenerator || isCustomGenerator) {
     let generator = false
-    
+
     if (isCustomGenerator && customGenerator.enable) generator = true
     if (!generator && isCobblestoneGenerator && config.cobblestone) generator = true
     if (!generator && isBasaltGenerator && config.basalt) generator = true
 
-    if(!generator) return;
+    if (!generator) return;
 
     let blocks = []
     if (isCobblestoneGenerator) blocks = config.cobblestoneGeneratorblocks
@@ -392,21 +392,17 @@ function Generator(
   }
 }
 
-if (config.player || config.player === null || config.player === undefined)
+if (config.player !== false)
   world.afterEvents.playerBreakBlock.subscribe((event) =>
     Generator(0, event.block, event.player, event.itemStackAfterBreak)
   );
 
-if (
-  config.explosion ||
-  config.explosion === null ||
-  config.explosion === undefined
-)
+if (config.explosion !== false)
   world.afterEvents.blockExplode.subscribe((event) =>
     Generator(1, event.block)
   );
 
-if (config.piston || config.piston === null || config.piston === undefined)
+if (config.piston !== false)
   world.afterEvents.pistonActivate.subscribe((event) => {
     const { dimension, location } = event.block;
 
