@@ -1,6 +1,6 @@
 {
 	"name": "ccbg",
-	"version": "1.2.4",
+	"version": "1.2.5",
 	"description": "Customize your cobblestone and basalt generator with this addon! You can make your cobblestone and basalt generator spawn any block you want. By default, it spawns all Minecraft ores, including ancient debris, making it perfect for SkyBlock and other minigames that utilize cobblestone and basalt generators.",
 	"main": "main.js",
 	"scripts": {
@@ -22,7 +22,7 @@
 	"author": "HirziDevs",
 	"license": "MIT",
 	"dependencies": {
-		"@minecraft/server": "^1.12.0-beta.1.21.1-stable"
+		"@minecraft/server": "^1.13.0"
 	},
 	"devDependencies": {
 		"ts-node": "^10.9.2",
