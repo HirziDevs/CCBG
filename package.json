@@ -22,7 +22,7 @@
 	"author": "HirziDevs",
 	"license": "MIT",
 	"dependencies": {
-		"@minecraft/server": "^1.13.0"
+		"@minecraft/server": "^1.14.0-beta"
 	},
 	"devDependencies": {
 		"ts-node": "^10.9.2",
