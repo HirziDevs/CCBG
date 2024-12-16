@@ -18,7 +18,7 @@ fs.readFile(filePath, "utf8", (err, data) => {
     if (manifest.dependencies) {
       manifest.dependencies.forEach((dependency) => {
         if (dependency.module_name === "@minecraft/server") {
-          dependency.version = "1.15.0-beta";
+          dependency.version = "1.18.0-beta";
         }
       });
     }
